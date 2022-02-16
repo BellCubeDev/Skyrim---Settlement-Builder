@@ -2,9 +2,9 @@ Scriptname BTDBuryActor extends activemagiceffect
 
 Import Math
 
-Activator Property TombStone Auto
+Activator Property TombStone  Auto
 ObjectReference theTomb
-BTDVars Property BTDQuest Auto
+BTDVars Property BTDQuest  Auto
 
 Event OnEffectFinish(Actor akTarget, Actor akCaster)
     If (akCaster == Game.GetPlayer() && akTarget.IsDead() == 1)

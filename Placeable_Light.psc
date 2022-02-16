@@ -2,10 +2,10 @@ Scriptname Placeable_Light extends ObjectReference
 
 
 
-GlobalVariable Property IO_01 Auto
-Activator property Candelabra_ON Auto
-Activator Property Candelabra_OFF Auto
-Light Property Candle_Light_Default Auto
+GlobalVariable Property IO_01  Auto
+Activator property Candelabra_ON  Auto
+Activator Property Candelabra_OFF  Auto
+Light Property Candle_Light_Default  Auto
 
 
 Event OnInit()

@@ -2,7 +2,7 @@ Scriptname Placeable_Tarot_Script extends ActiveMagicEffect
 
 
 
-Message[] Property OutputMessages Auto
+Message[] Property OutputMessages  Auto
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
        

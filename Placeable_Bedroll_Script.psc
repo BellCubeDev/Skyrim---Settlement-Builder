@@ -1,9 +1,9 @@
 Scriptname Placeable_Bedroll_Script extends ObjectReference  
 
 
-Message Property Bedroll_Ui Auto
-furniture Property Bedroll01 Auto 
-MiscObject Property MiscObj Auto
+Message Property Bedroll_Ui  Auto
+furniture Property Bedroll01  Auto 
+MiscObject Property MiscObj  Auto
 
 
 Event OnActivate(ObjectReference akActionRef)

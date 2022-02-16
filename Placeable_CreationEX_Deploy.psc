@@ -1,6 +1,6 @@
 Scriptname Placeable_CreationEX_Deploy extends ObjectReference 
 
-Activator Property ActivatorEX_Act Auto
+Activator Property ActivatorEX_Act  Auto
 
 Event OnActivate(ObjectReference akActionRef)
 

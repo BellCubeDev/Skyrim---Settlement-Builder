@@ -2,15 +2,15 @@ Scriptname Placeable_ApocTowerTop extends ObjectReference
 
 
 
-Message Property MenuUi Auto
-Message Property MenuUi_MakeStatic Auto
-Message Property Z_Ui Auto
-Message Property Y_Ui Auto
-Message Property X_Ui Auto
-Message Property Rotate_Ui Auto
-Message Property NoStatic Auto
-MiscObject property MiscObj auto
-Static Property StaticDummy Auto
+Message Property MenuUi  Auto
+Message Property MenuUi_MakeStatic  Auto
+Message Property Z_Ui  Auto
+Message Property Y_Ui  Auto
+Message Property X_Ui  Auto
+Message Property Rotate_Ui  Auto
+Message Property NoStatic  Auto
+MiscObject property MiscObj  Auto
+Static Property StaticDummy  Auto
 
 
 Event OnActivate(ObjectReference akActionRef)
@@ -30,6 +30,7 @@ Function Menu(Int aiButton = 0)
       ElseIf aiButton == 4
     Rotate_Menu()
     ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")
+    Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
     Utility.wait(0.1)
 
     ElseIf aiButton == 5

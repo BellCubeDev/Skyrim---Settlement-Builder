@@ -2,7 +2,7 @@ Scriptname Placeable_GlobalLight_Script extends ObjectReference
 
 
 
-GlobalVariable Property IO_01 Auto
+GlobalVariable Property IO_01  Auto
 
 Event OnInit()
     RegisterForSingleUpdate(1.0)

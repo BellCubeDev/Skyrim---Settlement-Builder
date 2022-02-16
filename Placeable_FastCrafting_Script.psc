@@ -1,7 +1,7 @@
 Scriptname Placeable_FastCrafting_Script extends activemagiceffect  
 
 
-ObjectReference Property CraftingStation Auto
+ObjectReference Property CraftingStation  Auto
 
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)

@@ -4,42 +4,42 @@ Scriptname Placeable_BanditRaid_Small extends ObjectReference
 
 import game
 import debug
-Message Property BattleStartMessage Auto
-Message Property  Placeable_AA_RaidMenu Auto
+Message Property BattleStartMessage  Auto
+Message Property  Placeable_AA_RaidMenu  Auto
 Int Property iResetRound = 1 Auto
-MiscObject property MiscObj auto
+MiscObject property MiscObj  Auto
 
 
-ActorBase property myCreature1 auto  ;Archers
-ActorBase property myCreature2 auto  ;Melee Fighters
-ActorBase property myCreature3 auto  ;Mages
-ActorBase property myCreature4 auto  ;Tank;
-ActorBase property myCreature5 auto  ;Tank;
-ActorBase property myCreature6 auto  ;Boss1
-ActorBase property myCreature7 auto  ;Boss2
-ActorBase property myCreature8 auto  ;Boss3
-;ActorBase property myCreature9 auto
-;ActorBase property myCreature10 auto
-;ActorBase property myCreature11 auto
-;ActorBase property myCreature12 auto
-;ActorBase property myCreature13 auto
-;ActorBase property myCreature14 auto
-;ActorBase property myCreature15 auto
-;ActorBase property myCreature16 auto
-;ActorBase property myCreature17 auto
-;ActorBase property myCreature18 auto
-;ActorBase property myCreature19 auto
-;ActorBase property myCreature20 auto
-;ActorBase property myCreature21 auto
-;ActorBase property myCreature22 auto
-;ActorBase property myCreature23 auto
-;ActorBase property myCreature24 auto
-;ActorBase property myCreature25 auto
-;ActorBase property myCreature26 auto
-;ActorBase property myCreature27 auto
-;ActorBase property myCreature28 auto
-;ActorBase property myCreature29 auto
-;ActorBase property myCreature30 auto
+ActorBase property myCreature1  Auto  ;Archers
+ActorBase property myCreature2  Auto  ;Melee Fighters
+ActorBase property myCreature3  Auto  ;Mages
+ActorBase property myCreature4  Auto  ;Tank;
+ActorBase property myCreature5  Auto  ;Tank;
+ActorBase property myCreature6  Auto  ;Boss1
+ActorBase property myCreature7  Auto  ;Boss2
+ActorBase property myCreature8  Auto  ;Boss3
+;ActorBase property myCreature9  Auto
+;ActorBase property myCreature10  Auto
+;ActorBase property myCreature11  Auto
+;ActorBase property myCreature12  Auto
+;ActorBase property myCreature13  Auto
+;ActorBase property myCreature14  Auto
+;ActorBase property myCreature15  Auto
+;ActorBase property myCreature16  Auto
+;ActorBase property myCreature17  Auto
+;ActorBase property myCreature18  Auto
+;ActorBase property myCreature19  Auto
+;ActorBase property myCreature20  Auto
+;ActorBase property myCreature21  Auto
+;ActorBase property myCreature22  Auto
+;ActorBase property myCreature23  Auto
+;ActorBase property myCreature24  Auto
+;ActorBase property myCreature25  Auto
+;ActorBase property myCreature26  Auto
+;ActorBase property myCreature27  Auto
+;ActorBase property myCreature28  Auto
+;ActorBase property myCreature29  Auto
+;ActorBase property myCreature30  Auto
 
 
 
@@ -54,6 +54,7 @@ EndEvent
 
 Event OnUpdateGameTime()
     debug.Notification("Brace yourself ")
+    Debug.Trace("[LVX-SSS] Brace yourself ")
     Utility.Wait(2)
     debug.Messagebox("THE BANDITS HAVE ARRIVED")                ;ARCHERS
     Utility.Wait(2)
@@ -118,6 +119,8 @@ Event OnUpdateGameTime()
    Self.PlaceActorAtMe(myCreature1).StartCombat(game.getplayer())
    
 Debug.Notification("Enemy Reinforcements Have Arrived")
+   
+Debug.Trace("[LVX-SSS] Enemy Reinforcements Have Arrived")
 
 
      Debug.Messagebox("Last Enemy Has Entered The Battle")
@@ -132,6 +135,7 @@ Function Menu(Int aiButton = 0)
  If aiButton == 0 
 RegisterForSingleUpdateGameTime(iResetRound) ;Event  Init() is at the begging of the script
            Debug.Notification("Round Reset")
+           Debug.Trace("[LVX-SSS] Round Reset")
            Utility.Wait(10)
            Debug.Messagebox("You have 1 hours before enemy reinforcements arrive")
 

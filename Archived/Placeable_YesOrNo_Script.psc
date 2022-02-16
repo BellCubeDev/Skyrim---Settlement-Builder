@@ -3,8 +3,8 @@ Scriptname Placeable_YesOrNo_Script extends activemagiceffect
 ; BELL: I LIKE your array experiment!
  
 
-Message[] Property OutputMessages Auto
-Message Property Ask01 Auto
+Message[] Property OutputMessages  Auto
+Message Property Ask01  Auto
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
 

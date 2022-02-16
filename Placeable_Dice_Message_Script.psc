@@ -1,6 +1,6 @@
 Scriptname Placeable_Dice_Message_Script extends ObjectReference
 
-Message[] Property OutputMessages Auto
+Message[] Property OutputMessages  Auto
 
 Event OnEquipped(Actor akActionRef)
     If (akActionRef != Game.GetPlayer())

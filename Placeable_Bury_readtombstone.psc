@@ -1,8 +1,8 @@
 Scriptname ReadTombStone extends ObjectReference  
 
 String Property actorName  Auto  
-String Property DateOfDeath Auto 
-BTDVars Property BTDQuest Auto 
+String Property DateOfDeath  Auto 
+BTDVars Property BTDQuest  Auto 
 
 Event OnInit()
     If (!actorName)

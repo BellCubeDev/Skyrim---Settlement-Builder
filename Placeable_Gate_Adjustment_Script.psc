@@ -1,35 +1,35 @@
 Scriptname Placeable_Gate_Adjustment_Script extends ObjectReference  
 
 
-Message Property MenuUi_Door_MainMenu Auto
-Message Property MenuUi_Place_Door_Activator Auto
-Message Property  Z_Ui Auto
-Message Property   Y_Ui Auto
-Message Property  X_Ui Auto
-Message Property Rotate_Ui Auto
+Message Property MenuUi_Door_MainMenu  Auto
+Message Property MenuUi_Place_Door_Activator  Auto
+Message Property  Z_Ui  Auto
+Message Property   Y_Ui  Auto
+Message Property  X_Ui  Auto
+Message Property Rotate_Ui  Auto
 
-MiscObject property MiscObj auto
-Activator Property Activator01 Auto
-Static Property StaticDummy Auto
+MiscObject property MiscObj  Auto
+Activator Property Activator01  Auto
+Static Property StaticDummy  Auto
 ;--------------------------------------------------------SKSE Propertys-----------------
-Actor Property PlayerREf Auto
-GlobalVariable Property Placeable_Positioner_SKSE_Global Auto
-Message Property MenuUi Auto
-Message Property MenuUi_Door_MainMenu_SKSE Auto
-Message Property MenuUi_MakeStatic Auto
-Message Property MenuUi_MakeStatic_SKSE Auto
-Message Property MenuUi_Options Auto
-Message Property MenuUi_Options_SKSE Auto
-Message Property  MenuUi_Options_PositionerMenu Auto
-Message Property  MenuUi_Options_PositionerMenu_SKSE Auto
+Actor Property PlayerREf  Auto
+GlobalVariable Property SSB_Positioner_SKSE_Global  Auto
+Message Property MenuUi  Auto
+Message Property MenuUi_Door_MainMenu_SKSE  Auto
+Message Property MenuUi_MakeStatic  Auto
+Message Property MenuUi_MakeStatic_SKSE  Auto
+Message Property MenuUi_Options  Auto
+Message Property MenuUi_Options_SKSE  Auto
+Message Property  MenuUi_Options_PositionerMenu  Auto
+Message Property  MenuUi_Options_PositionerMenu_SKSE  Auto
 
-Message Property Z_Ui_SKSE Auto
-Message Property Y_Ui_SKSE Auto
-Message Property X_Ui_SKSE Auto
-Message Property Rotate_Ui_SKSE Auto
+Message Property Z_Ui_SKSE  Auto
+Message Property Y_Ui_SKSE  Auto
+Message Property X_Ui_SKSE  Auto
+Message Property Rotate_Ui_SKSE  Auto
 
 
-Spell Property Placeable_SKSE_Positioner_Toggle Auto
+Spell Property SSB_SKSE_Positioner_Toggle  Auto
 
 Event OnLoad()
 
@@ -306,7 +306,10 @@ Function MenuUi_SKSE(Bool abFadeIn = False)
    Int aiButton =  MenuUi_Door_MainMenu_SKSE.show()       
       
 
-       ;Debug.Notification("SKSE Positioner Active")
+       ;Debug.Notification("SKSE Positioner Active")       
+      
+
+       Debug.Trace("[LVX-SSS] SKSE Positioner Active")
     If aiButton == 1
         Z_Menu_SKSE()
        ElseIf aiButton == 2
@@ -317,6 +320,7 @@ Function MenuUi_SKSE(Bool abFadeIn = False)
       ElseIf aiButton == 4
     Rotate_Menu_SKSE()
     ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")
+    Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
     Utility.wait(0.1)
  
      

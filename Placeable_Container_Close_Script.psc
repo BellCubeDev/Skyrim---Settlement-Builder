@@ -1,6 +1,6 @@
 Scriptname Placeable_Container_Close_Script extends ObjectReference  
 
-Actor Property PlayerRef Auto
+Actor Property PlayerRef  Auto
 
 Event OnActivate(ObjectReference akActionRef)
 Self.SetOpen()

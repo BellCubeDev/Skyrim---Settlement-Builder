@@ -1,14 +1,14 @@
 Scriptname Placeable_TrashCanScript extends ObjectReference  
 
-ObjectReference Property Linked_Chest Auto
-Message Property  Trash_MenuUi Auto
-Message Property  EmptyTrash_Ui Auto
-Message Property  MenuUi_PositionSelect Auto
-Message Property  Z_Ui Auto
-Message Property X_Ui Auto
-Message Property Y_Ui Auto
-Message Property  Rotate_Ui Auto
-MiscObject property MiscObj auto
+ObjectReference Property Linked_Chest  Auto
+Message Property  Trash_MenuUi  Auto
+Message Property  EmptyTrash_Ui  Auto
+Message Property  MenuUi_PositionSelect  Auto
+Message Property  Z_Ui  Auto
+Message Property X_Ui  Auto
+Message Property Y_Ui  Auto
+Message Property  Rotate_Ui  Auto
+MiscObject property MiscObj  Auto
 
 Event OnActivate(ObjectReference akActionRef)
  Menu()

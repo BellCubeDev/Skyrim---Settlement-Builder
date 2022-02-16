@@ -5,21 +5,21 @@ Scriptname Placeable_Container_Flora_Hanging extends ObjectReference
 
 
 
-ObjectReference Property Activate_Object Auto 
-Message Property Menu_Action Auto
-Message Property  MenuUi_PositionSelect_Container Auto
-Message Property  Z_Ui Auto
-Message Property  Y_Ui Auto
-Message Property  X_Ui Auto
-Message Property Rotate_Ui Auto
-Message Property MenuUi_Make_Container_Static Auto
-Message Property MenuUi_Make_NoneContainer_Static Auto
-Message Property MenuUi_Action_Flora_Hangable Auto
-Message Property MenuUi_Plant_Flora_Static Auto
-MiscObject property MiscObj auto
-Activator Property ContainerAct Auto
-flora Property Plant01 Auto
-Static Property StaticDummy Auto
+ObjectReference Property Activate_Object  Auto 
+Message Property Menu_Action  Auto
+Message Property  MenuUi_PositionSelect_Container  Auto
+Message Property  Z_Ui  Auto
+Message Property  Y_Ui  Auto
+Message Property  X_Ui  Auto
+Message Property Rotate_Ui  Auto
+Message Property MenuUi_Make_Container_Static  Auto
+Message Property MenuUi_Make_NoneContainer_Static  Auto
+Message Property MenuUi_Action_Flora_Hangable  Auto
+Message Property MenuUi_Plant_Flora_Static  Auto
+MiscObject property MiscObj  Auto
+Activator Property ContainerAct  Auto
+flora Property Plant01  Auto
+Static Property StaticDummy  Auto
 
 Event OnActivate(ObjectReference akActionRef)
 self.BlockActivation()

@@ -7,11 +7,11 @@ Scriptname Placeable_Key_Script extends ObjectReference
 ;Please be sure to credit If you this in your own published mod.
 
 
-ObjectReference Property Door01 Auto
+ObjectReference Property Door01  Auto
 {The door to lock}
 
 
-String Property LOCKMESSAGE Auto
+String Property LOCKMESSAGE  Auto
 {The notification to when the door is locked}
 
 
@@ -23,6 +23,8 @@ Event OnEquipped(Actor akActor)
     If (OpenState == 1 || OpenState == 2)
 
         debug.notification(LOCKMESSAGE)
+
+        Debug.Trace("[LVX-SSS] " + LOCKMESSAGE)
         Door01.Activate(Game.GetPlayer())
         Utility.Wait(1.5)
         Door01.Lock()
@@ -30,6 +32,8 @@ Event OnEquipped(Actor akActor)
     Else
 
         debug.notification(LOCKMESSAGE)
+
+        Debug.Trace("[LVX-SSS] " + LOCKMESSAGE)
         Door01.Lock()
 
     EndIf

@@ -3,20 +3,20 @@ Scriptname Placeable_BanditRaid_Large extends ObjectReference
 
 import game
 import debug
-Message Property BattleStartMessage Auto
-Message Property  Placeable_AA_RaidMenu Auto
+Message Property BattleStartMessage  Auto
+Message Property  Placeable_AA_RaidMenu  Auto
 Int Property iResetRound = 1 Auto
-MiscObject property MiscObj auto
+MiscObject property MiscObj  Auto
 
 
-ActorBase property myCreature1 auto  ;Archers
-ActorBase property myCreature2 auto  ;Melee Fighters
-ActorBase property myCreature3 auto  ;Mages
-ActorBase property myCreature4 auto  ;Tank;
-ActorBase property myCreature5 auto  ;Tank;
-ActorBase property myCreature6 auto  ;Boss1
-ActorBase property myCreature7 auto  ;Boss2
-ActorBase property myCreature8 auto  ;Boss3
+ActorBase property myCreature1  Auto  ;Archers
+ActorBase property myCreature2  Auto  ;Melee Fighters
+ActorBase property myCreature3  Auto  ;Mages
+ActorBase property myCreature4  Auto  ;Tank;
+ActorBase property myCreature5  Auto  ;Tank;
+ActorBase property myCreature6  Auto  ;Boss1
+ActorBase property myCreature7  Auto  ;Boss2
+ActorBase property myCreature8  Auto  ;Boss3
 
 
 
@@ -31,6 +31,7 @@ EndEvent
 
 Event OnUpdateGameTime()
     debug.Notification("Brace yourself ")
+    Debug.Trace("[LVX-SSS] Brace yourself ")
     Utility.Wait(2)
     debug.Messagebox("THE BANDITS HAVE ARRIVED")                ;ARCHERS
     Utility.Wait(2)
@@ -125,6 +126,7 @@ Utility.wait(10)
     Self.PlaceActorAtMe(myCreature8).StartCombat(game.getplayer()) ;BOSS
 Utility.wait(30)
 Debug.Notification("Enemy Reinforcements Have Arrived")
+Debug.Trace("[LVX-SSS] Enemy Reinforcements Have Arrived")
 
 ;-----------------------------------------------------------------------------------------------
 ; ROUND 2
@@ -236,6 +238,7 @@ Function Menu(Int aiButton = 0)
  If aiButton == 0 
 RegisterForSingleUpdateGameTime(iResetRound) ;Event  Init() is at the begging of the script
            Debug.Notification("Round Reset")
+           Debug.Trace("[LVX-SSS] Round Reset")
            Utility.Wait(10)
            Debug.Messagebox("You have 1 hours before enemy reinforcements arrive")
 

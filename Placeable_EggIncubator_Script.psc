@@ -10,5 +10,6 @@ EndEvent
 Event OnUpdateGameTime()
     SELF.Reset()
     ;debug.Notification("Eggs Ready")
+    Debug.Trace("[LVX-SSS] Eggs Ready")
     RegisterForSingleUpdateGameTime(iResetHours)
 EndEvent

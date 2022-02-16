@@ -1,3 +1,3 @@
 Scriptname Placeable_Lvx_Courier_QuestScrip extends Quest  
 
-WICourierScript Property pWIcourier Auto  
+WICourierScript Property pWIcourier  Auto  

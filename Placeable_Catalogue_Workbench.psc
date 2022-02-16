@@ -1,9 +1,9 @@
 Scriptname Placeable_Catalogue_Workbench extends ObjectReference  
 
 
-GlobalVariable Property CreativeMode Auto
-Actor Property PlayerRef Auto
-Spell Property Placeable_CreativeMode_Catalouge_Spell Auto
+GlobalVariable Property CreativeMode  Auto
+Actor Property PlayerRef  Auto
+Spell Property SSB_CreativeMode_Catalouge_Spell  Auto
 
 
 Event OnActivate(ObjectReference akActionRef)

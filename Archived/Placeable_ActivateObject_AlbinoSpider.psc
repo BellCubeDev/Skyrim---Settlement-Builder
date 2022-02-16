@@ -1,8 +1,8 @@
 Scriptname Placeable_ActivateObject_AlbinoSpider extends ObjectReference  
 
 
-ObjectReference Property Activate_Object01 Auto
-Actor Property AlbinoSpider01 Auto
+ObjectReference Property Activate_Object01  Auto
+Actor Property AlbinoSpider01  Auto
 
 Event OnActivate(ObjectReference akActionRef)
     Utility.Wait(0.5)

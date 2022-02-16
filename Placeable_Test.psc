@@ -1,9 +1,9 @@
 ScriptName Placeable_Test Extends ObjectReference
 
 
-Message Property Main_Menu Auto
-Message Property Rotate_Ui_Left Auto
-Message Property Rotate_Ui_Right Auto
+Message Property Main_Menu  Auto
+Message Property Rotate_Ui_Left  Auto
+Message Property Rotate_Ui_Right  Auto
 
 
 Event OnActivate(ObjectReference akActionRef)

@@ -2,14 +2,14 @@ Scriptname Placeable_KeyMaster_Script extends ObjectReference
 
 
 
-ObjectReference Property Door01 Auto
-ObjectReference Property Door02 Auto
-ObjectReference Property Door03 Auto
-ObjectReference Property Door04 Auto
+ObjectReference Property Door01  Auto
+ObjectReference Property Door02  Auto
+ObjectReference Property Door03  Auto
+ObjectReference Property Door04  Auto
 {The door to lock}
 
 
-String Property LOCKMESSAGE Auto
+String Property LOCKMESSAGE  Auto
 {The notification to when the door is locked}
 
 
@@ -26,6 +26,8 @@ Event OnEquipped(Actor akActor)
     If (OpenState == 1 || OpenState == 2)
 
         debug.notification(LOCKMESSAGE)
+
+        Debug.Trace("[LVX-SSS] " + LOCKMESSAGE)
         Door01.Activate(Game.GetPlayer())
              Door02.Activate(Game.GetPlayer())
              Door03.Activate(Game.GetPlayer())
@@ -41,6 +43,8 @@ Event OnEquipped(Actor akActor)
     Else
 
         debug.notification(LOCKMESSAGE)
+
+        Debug.Trace("[LVX-SSS] " + LOCKMESSAGE)
         Door01.Lock()
              Door02.Lock()
              Door03.Lock()

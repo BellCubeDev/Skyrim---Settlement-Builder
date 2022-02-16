@@ -2,10 +2,10 @@ Scriptname Placeable_DoorHome_Script extends ObjectReference
 
 
 
-Actor Property PlayerRef Auto
-ObjectReference Property TeleportMarker auto
-ObjectReference Property ReturnMarker auto
-ReferenceAlias Property Follower Auto
+Actor Property PlayerRef  Auto
+ObjectReference Property TeleportMarker  Auto
+ObjectReference Property ReturnMarker  Auto
+ReferenceAlias Property Follower  Auto
 
 Event OnActivate(ObjectReference akActionRef)
     ReturnMarker.MoveTo(PlayerRef)

@@ -1,13 +1,13 @@
 Scriptname Placeable_ActionAdjustment_Script extends ObjectReference
 
-ObjectReference Property Activate_Object Auto
-Message Property Menu_Action Auto
-Message Property  MenuUi_PositionSelect Auto
-Message Property  Z_Ui Auto
-Message Property   Y_Ui Auto
-Message Property  X_Ui Auto
-Message Property Rotate_Ui Auto
-MiscObject property MiscObj auto
+ObjectReference Property Activate_Object  Auto
+Message Property Menu_Action  Auto
+Message Property  MenuUi_PositionSelect  Auto
+Message Property  Z_Ui  Auto
+Message Property   Y_Ui  Auto
+Message Property  X_Ui  Auto
+Message Property Rotate_Ui  Auto
+MiscObject property MiscObj  Auto
 
 Actor PlayerREF = Game.GetPlayer()
 

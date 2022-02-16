@@ -3,7 +3,7 @@ Scriptname Placeable_CloseAnimation_Script extends ObjectReference
 
 
 
-ObjectReference Property Activate_Object01 Auto
+ObjectReference Property Activate_Object01  Auto
 
 
 

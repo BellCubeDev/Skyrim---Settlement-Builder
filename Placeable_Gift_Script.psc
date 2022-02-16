@@ -1,7 +1,7 @@
 Scriptname Placeable_Gift_Script extends ObjectReference  
 
-Armor Property Boots Auto
-Book Property Gift_Card Auto
+Armor Property Boots  Auto
+Book Property Gift_Card  Auto
 
 Event OnRead()
 

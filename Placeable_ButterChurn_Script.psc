@@ -10,5 +10,6 @@ EndEvent
 Event OnUpdateGameTime()
     SELF.Reset()
     ;debug.Notification("Butters Ready")
+    Debug.Trace("[LVX-SSS] Butters Ready")
     RegisterForSingleUpdateGameTime(iResetHours)
 EndEvent

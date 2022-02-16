@@ -1,8 +1,8 @@
 Scriptname Placeable_CreativeMode_Anvil extends ObjectReference  
 
 
-GlobalVariable Property CreativeMode Auto
-Actor Property PlayerRef Auto
+GlobalVariable Property CreativeMode  Auto
+Actor Property PlayerRef  Auto
 
 
 

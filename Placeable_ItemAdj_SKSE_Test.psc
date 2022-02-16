@@ -1,18 +1,18 @@
 Scriptname Placeable_ItemAdj_SKSE_Test extends ObjectReference  
  
  
-Message Property MenuUi Auto
-Message Property MenuUi_MakeStatic Auto
-Message Property Z_Ui Auto
-Message Property Z_Ui_SKSE Auto
-Message Property Y_Ui Auto
-Message Property Y_Ui_SKSE Auto
-Message Property X_Ui Auto
-Message Property X_Ui_SKSE Auto
-Message Property Rotate_Ui Auto
-Message Property Rotate_Ui_SKSE Auto
-MiscObject property MiscObj auto
-Static Property StaticDummy Auto
+Message Property MenuUi  Auto
+Message Property MenuUi_MakeStatic  Auto
+Message Property Z_Ui  Auto
+Message Property Z_Ui_SKSE  Auto
+Message Property Y_Ui  Auto
+Message Property Y_Ui_SKSE  Auto
+Message Property X_Ui  Auto
+Message Property X_Ui_SKSE  Auto
+Message Property Rotate_Ui  Auto
+Message Property Rotate_Ui_SKSE  Auto
+MiscObject property MiscObj  Auto
+Static Property StaticDummy  Auto
  
  
  

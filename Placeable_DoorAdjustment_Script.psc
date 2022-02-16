@@ -1,21 +1,21 @@
 Scriptname Placeable_DoorAdjustment_Script extends ObjectReference  
 
 
-ObjectReference Property Activate_Object Auto 
-Message Property Menu_Action Auto
-Message Property  MenuUi_PositionSelect02 Auto
-Message Property  Z_Ui Auto
-Message Property   Y_Ui Auto
-Message Property  X_Ui Auto
-Message Property Rotate_Ui Auto
-Message Property MenuUi_MakeStatic_Activator Auto
-MiscObject property MiscObj auto
-Activator Property ActivatorDummy Auto
-Actor Property PlayerRef Auto
-ObjectReference Property TeleportMarker auto
-ObjectReference Property ReturnMarker auto
-ObjectReference Property ReturnMarker02 auto
-ReferenceAlias Property Follower Auto
+ObjectReference Property Activate_Object  Auto 
+Message Property Menu_Action  Auto
+Message Property  MenuUi_PositionSelect02  Auto
+Message Property  Z_Ui  Auto
+Message Property   Y_Ui  Auto
+Message Property  X_Ui  Auto
+Message Property Rotate_Ui  Auto
+Message Property MenuUi_MakeStatic_Activator  Auto
+MiscObject property MiscObj  Auto
+Activator Property ActivatorDummy  Auto
+Actor Property PlayerRef  Auto
+ObjectReference Property TeleportMarker  Auto
+ObjectReference Property ReturnMarker  Auto
+ObjectReference Property ReturnMarker02  Auto
+ReferenceAlias Property Follower  Auto
 
 
 Event OnLoad()

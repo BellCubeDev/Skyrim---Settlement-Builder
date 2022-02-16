@@ -1,15 +1,15 @@
             Scriptname Placeable_CreativeMode_Catalogue extends activemagiceffect  
 
-Message Property Placeable_ManualMenu_CreativeMode_Catalogue Auto
-ObjectReference Property CraftingStation01_Catagory Auto
-ObjectReference Property CraftingStation02_Catagory Auto
-ObjectReference Property CraftingStation03_Catagory Auto
-ObjectReference Property CraftingStation04_Catagory Auto
-ObjectReference Property CraftingStation05_Catagory Auto
-ObjectReference Property CraftingStation06_Catagory Auto
-ObjectReference Property CraftingStation07_Catagory Auto
-ObjectReference Property CraftingStation08_Catagory Auto
-ObjectReference Property CraftingStation09_Catagory Auto
+Message Property SSB_ManualMenu_CreativeMode_Catalogue  Auto
+ObjectReference Property CraftingStation01_Catagory  Auto
+ObjectReference Property CraftingStation02_Catagory  Auto
+ObjectReference Property CraftingStation03_Catagory  Auto
+ObjectReference Property CraftingStation04_Catagory  Auto
+ObjectReference Property CraftingStation05_Catagory  Auto
+ObjectReference Property CraftingStation06_Catagory  Auto
+ObjectReference Property CraftingStation07_Catagory  Auto
+ObjectReference Property CraftingStation08_Catagory  Auto
+ObjectReference Property CraftingStation09_Catagory  Auto
 
 
 

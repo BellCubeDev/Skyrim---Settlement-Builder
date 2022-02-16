@@ -1,8 +1,8 @@
 Scriptname Placeable_HandContainer extends ObjectReference  
 
-Message Property My_InventoryContainer_Message Auto
-Spell Property Handheld_Container_Spell Auto
-Actor Property PlayerRef Auto
+Message Property My_InventoryContainer_Message  Auto
+Spell Property Handheld_Container_Spell  Auto
+Actor Property PlayerRef  Auto
 
 
 

@@ -2,8 +2,8 @@ Scriptname Placeable_Flora_Frostbite_Eggs extends ObjectReference
 
 
 
-Actorbase Property Enemy Auto
-ActorBase Property PlayerRef Auto
+Actorbase Property Enemy  Auto
+ActorBase Property PlayerRef  Auto
 
 Event OnActivate(ObjectReference akActionRef)    ;Get Eggs From Albino Nest
   Int eggs = Self.GetItemCount(Game.Getform(0x09151B))
@@ -20,8 +20,11 @@ If (eggs == 3) ; Say Nothing Just Recieve Eggs
 Int iRoll = Utility.RandomInt(0,15)
 
 Debug.Notification("Rolling Number")
+
+Debug.Trace("[LVX-SSS] Rolling Number")
 If iRoll == 12
 Debug.Notification("Oops the eggs hatched!!")
+Debug.Trace("[LVX-SSS] Oops the eggs hatched!!")
 
 Game.GetPlayer().PlaceactorAtMe(Enemy).StartCombat(Game.GetPlayer())
 Game.GetPlayer().PlaceactorAtMe(Enemy).StartCombat(Game.GetPlayer())

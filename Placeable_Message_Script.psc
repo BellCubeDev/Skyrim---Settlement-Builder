@@ -8,7 +8,7 @@ Scriptname Placeable_Message_Script extends ObjectReference
 ;Please be sure to credit If you this in your own published mod.
 
 
-Bool Property  DONE Auto hidden
+Bool Property  DONE  Auto hidden
 
 Bool Property doOnce = False Auto
 {Set to True If you wish this message to only show once.
@@ -25,10 +25,10 @@ Bool Property MsgBox = True Auto
 
 Default = True}
 
-Message Property MyMessage Auto
+Message Property MyMessage  Auto
 {Your custom message you will be using.}
 
-String Property Text Auto
+String Property Text  Auto
 {Type your message to show here.}
 
 
@@ -68,6 +68,7 @@ Function ShowMessage()
             debug.messagebox(Text)
         Else
             debug.notification(Text)
+            Debug.Trace("[LVX-SSS] " + Text)
         EndIf
     EndIf
 

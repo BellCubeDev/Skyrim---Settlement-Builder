@@ -1,25 +1,25 @@
 Scriptname Placeable_Container_Flora extends ObjectReference  
 
 
-ObjectReference Property Activate_Object Auto 
-Message Property Menu_Action Auto
-Message Property  MenuUi_PositionSelect_Container Auto
-Message Property  Z_Ui Auto
-Message Property   Y_Ui Auto
-Message Property  X_Ui Auto
-Message Property Rotate_Ui Auto
-Message Property MenuUi_Make_Container_Static Auto
-Message Property MenuUi_Make_NoneContainer_Static Auto
-Message Property MenuUi_Action_Flora Auto
-Message Property MenuUi_Plant_Flora_Static Auto
-MiscObject property MiscObj auto
-MiscObject Property Shovel01 Auto
-MiscObject Property Shovel02 Auto
-Activator Property ContainerAct Auto
-flora Property Plant01 Auto
-Static Property StaticDummy Auto
-Sound Property Placeable_NPCHumanShovel Auto
-Sound Property Placeable_NPCHumanShovelDump Auto
+ObjectReference Property Activate_Object  Auto 
+Message Property Menu_Action  Auto
+Message Property  MenuUi_PositionSelect_Container  Auto
+Message Property  Z_Ui  Auto
+Message Property   Y_Ui  Auto
+Message Property  X_Ui  Auto
+Message Property Rotate_Ui  Auto
+Message Property MenuUi_Make_Container_Static  Auto
+Message Property MenuUi_Make_NoneContainer_Static  Auto
+Message Property MenuUi_Action_Flora  Auto
+Message Property MenuUi_Plant_Flora_Static  Auto
+MiscObject property MiscObj  Auto
+MiscObject Property Shovel01  Auto
+MiscObject Property Shovel02  Auto
+Activator Property ContainerAct  Auto
+flora Property Plant01  Auto
+Static Property StaticDummy  Auto
+Sound Property SSB_NPCHumanShovel  Auto
+Sound Property SSB_NPCHumanShovelDump  Auto
 
 
 Formlist Placeable_A_DeleteAll 

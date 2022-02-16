@@ -1,12 +1,12 @@
 Scriptname Placeable_UseAdjustment_Script extends ObjectReference  
 
-Message Property Menu_ActionUse Auto
-Message Property MenuUi_PositionSelect Auto
-Message Property  Z_Ui Auto
-Message Property   Y_Ui Auto
-Message Property  X_Ui Auto
-Message Property Rotate_Ui Auto
-MiscObject property MiscObj auto
+Message Property Menu_ActionUse  Auto
+Message Property MenuUi_PositionSelect  Auto
+Message Property  Z_Ui  Auto
+Message Property   Y_Ui  Auto
+Message Property  X_Ui  Auto
+Message Property Rotate_Ui  Auto
+MiscObject property MiscObj  Auto
 
 Event OnInit()
 Self.BlockActivation()

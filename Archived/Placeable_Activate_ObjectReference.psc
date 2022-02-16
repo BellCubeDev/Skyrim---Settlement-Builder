@@ -1,7 +1,7 @@
 Scriptname Placeable_Activate_ObjectReference extends ObjectReference  
 
 
-ObjectReference Property Activate_Object01 Auto
+ObjectReference Property Activate_Object01  Auto
 
 Event OnActivate(ObjectReference akActionRef) 
      Self.SetOpen()

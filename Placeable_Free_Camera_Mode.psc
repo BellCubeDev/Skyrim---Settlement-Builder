@@ -1,7 +1,7 @@
 Scriptname Placeable_Free_Camera_Mode extends activemagiceffect  
 
 
-Actor Property PlayerRef Auto
+Actor Property PlayerRef  Auto
 
 
 

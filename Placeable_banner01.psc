@@ -7,11 +7,11 @@ Scriptname Placeable_Banner01_Script extends ObjectReference
 ;====================================================================================
 
 
-;Activator Property PlaceableObject_Ind Auto
-Activator Property Banner_Act Auto
-MiscObject Property Misc_ObjectKit Auto
+;Activator Property PlaceableObject_Ind  Auto
+Activator Property Banner_Act  Auto
+MiscObject Property Misc_ObjectKit  Auto
 
-Message Property MenuUi_Misc_Adjust_MSG Auto
+Message Property MenuUi_Misc_Adjust_MSG  Auto
 
 
        
@@ -19,7 +19,7 @@ Message Property MenuUi_Misc_Adjust_MSG Auto
 
 
 
-Actor Property PlayerRef Auto
+Actor Property PlayerRef  Auto
 
 Event OnLoad()
     Utility.Wait(2.0)

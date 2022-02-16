@@ -1,6 +1,6 @@
 Scriptname Placeable_UseBedroll_Script extends ObjectReference  
 
-ObjectReference Property Bedroll Auto
+ObjectReference Property Bedroll  Auto
 
 
 Event OnActivate(ObjectReference AkActionRef)

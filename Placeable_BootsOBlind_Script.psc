@@ -1,8 +1,8 @@
 Scriptname Placeable_BootsOBlind_Script extends ObjectReference  
 
-Actor Property PlayerRef Auto
-Message Property DebugNotification Auto
-ImageSpaceModifier Property BootsOBlind Auto
+Actor Property PlayerRef  Auto
+Message Property DebugNotification  Auto
+ImageSpaceModifier Property BootsOBlind  Auto
 
 
 Event OnEquipped(Actor akActor)

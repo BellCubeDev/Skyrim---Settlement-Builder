@@ -6,20 +6,20 @@ Scriptname Placeable_Banner_Script extends ObjectReference
 
 ;====================================================================================
 
-Sound Property SoundFX Auto
-Activator Property PlaceableObject_Ind Auto
-Activator Property Placeable_Scripted_Act Auto
-MiscObject Property Misc_ObjectKit Auto
+Sound Property SoundFX  Auto
+Activator Property PlaceableObject_Ind  Auto
+Activator Property SSB_Scripted_Act  Auto
+MiscObject Property Misc_ObjectKit  Auto
 
-Message Property MenuUi_Misc_Adjust_MSG Auto
+Message Property MenuUi_Misc_Adjust_MSG  Auto
 
 ObjectReference Useable_Obj_Act
        
-Bool Property IsOptionState Auto
+Bool Property IsOptionState  Auto
 Bool Loaded
 
 
-Actor Property PlayerRef Auto
+Actor Property PlayerRef  Auto
 
 Event OnLoad()
     Loaded = True

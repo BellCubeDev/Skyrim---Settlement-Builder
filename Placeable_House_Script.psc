@@ -1,15 +1,15 @@
 Scriptname Placeable_House_Script extends ObjectReference  
 
-ObjectReference Property Activate_Object Auto 
-Message Property Menu_Action Auto
-Message Property  MenuUi_PositionSelect Auto
-Message Property  Z_Ui Auto
-Message Property   Y_Ui Auto
-Message Property  X_Ui Auto
-Message Property Rotate_Ui Auto
-MiscObject property MiscObj auto
-Activator Property HouseDummy Auto
-Message Property MenuUi_MakeStatic_Activator Auto
+ObjectReference Property Activate_Object  Auto 
+Message Property Menu_Action  Auto
+Message Property  MenuUi_PositionSelect  Auto
+Message Property  Z_Ui  Auto
+Message Property   Y_Ui  Auto
+Message Property  X_Ui  Auto
+Message Property Rotate_Ui  Auto
+MiscObject property MiscObj  Auto
+Activator Property HouseDummy  Auto
+Message Property MenuUi_MakeStatic_Activator  Auto
 
 Event OnActivate(ObjectReference akActionRef)
 self.BlockActivation()

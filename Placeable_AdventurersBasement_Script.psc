@@ -3,20 +3,20 @@ Scriptname Placeable_AdventurersBasement_Script extends ObjectReference
 
 ;====================================================================================
 
-Sound Property SoundFX Auto
-Activator Property PlaceableObject Auto
+Sound Property SoundFX  Auto
+Activator Property PlaceableObject  Auto
 
-MiscObject Property ObjectKit Auto
+MiscObject Property ObjectKit  Auto
 
-Message Property Placeable_AdvBsmtDoorMsg Auto
+Message Property SSB_AdvBsmtDoorMsg  Auto
 
 ObjectReference UseableObject
 
-Bool Property IsOptionState Auto
+Bool Property IsOptionState  Auto
 Bool Loaded
 
 
-Actor Property PlayerRef Auto
+Actor Property PlayerRef  Auto
 
 Event OnLoad()
     Loaded = True

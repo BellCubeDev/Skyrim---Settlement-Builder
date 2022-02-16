@@ -3,8 +3,8 @@ Scriptname Placeable_ClutterExtension_Script extends ObjectReference
  
 
 
-Activator Property Clutter01 Auto 
-MiscObject Property MiscObj01 Auto
+Activator Property Clutter01  Auto 
+MiscObject Property MiscObj01  Auto
 
 
 Event OnActivate(ObjectReference akActionRef)

@@ -1,6 +1,6 @@
 Scriptname Placeable_AnimatedObjects_Script extends ObjectReference  
 
-Bool property bAllowInterrupt = False auto
+Bool property bAllowInterrupt = False Auto
 {Allow interrupts While animation? Default: False}
 ; BELL: DocuStrings!!! YES!!! And now it works!
 

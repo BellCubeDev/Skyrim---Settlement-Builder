@@ -2,15 +2,15 @@ Scriptname Placeable_LightSource_PlaceAtMe extends ObjectReference
 
 
 
-Light Property Light_Source01 Auto 
-Light Property Light_Source02 Auto
-Light Property Light_Source03 Auto
-Light Property Light_Source04 Auto
-Light Property Light_Source05 Auto
-Light Property Light_Source06 Auto
-Light Property Light_Source07 Auto
-Light Property Light_Source08 Auto
-Light Property Light_Source09 Auto
+Light Property Light_Source01  Auto 
+Light Property Light_Source02  Auto
+Light Property Light_Source03  Auto
+Light Property Light_Source04  Auto
+Light Property Light_Source05  Auto
+Light Property Light_Source06  Auto
+Light Property Light_Source07  Auto
+Light Property Light_Source08  Auto
+Light Property Light_Source09  Auto
 
 Event OnActivate(ObjectReference akActionRef)
 

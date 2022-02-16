@@ -6,14 +6,14 @@ Scriptname Placeable_XBOX_Position_SKSE_SUb extends ObjectReference
 
 
 
-Actor Property PlayerRef Auto 
-Static Property Gargoyle Auto 
+Actor Property PlayerRef  Auto 
+Static Property Gargoyle  Auto 
 
-GlobalVariable Property PositionType Auto
-Message Property MainPositionMessage Auto
-Message Property PositionMove Auto 
-Message Property PositionRotate Auto 
-Message Property PositionScale Auto 
+GlobalVariable Property PositionType  Auto
+Message Property MainPositionMessage  Auto
+Message Property PositionMove  Auto 
+Message Property PositionRotate  Auto 
+Message Property PositionScale  Auto 
 
 ObjectReference PositionObject
 Bool Position 

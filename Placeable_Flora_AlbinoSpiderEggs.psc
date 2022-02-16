@@ -1,7 +1,7 @@
 Scriptname Placeable_Flora_AlbinoSpiderEggs extends ObjectReference  
 
 
-Actorbase Property Enemy Auto
+Actorbase Property Enemy  Auto
 
 
 Event OnActivate(ObjectReference akActionRef)    ;Get Eggs From Albino Nest
@@ -19,6 +19,7 @@ If (eggs == 3) ; Say Nothing Just Recieve Eggs
 Int iRoll = Utility.RandomInt(0,15)
 If iRoll == 12
 Debug.Notification("Oops the eggs hatched!!")
+Debug.Trace("[LVX-SSS] Oops the eggs hatched!!")
 
 Game.GetPlayer().PlaceactorAtMe(Enemy).StartCombat(Game.GetPlayer())
 Game.GetPlayer().PlaceactorAtMe(Enemy).StartCombat(Game.GetPlayer())

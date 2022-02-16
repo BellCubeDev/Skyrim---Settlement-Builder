@@ -2,31 +2,31 @@ Scriptname Placeable_Banner_Adjustment extends ObjectReference
  
 
 
-Actor Property PlayerREf Auto
-GlobalVariable Property Placeable_Positioner_SKSE_Global Auto
-;GlobalVariable Property Placeable_Auto_Leveling_Items Auto ; Defualt = (1.0)
-Message Property MenuUi_Banner Auto
-Message Property MenuUi_Banner_SKSE Auto
-Message Property MenuUi_MakeStatic Auto
-Message Property MenuUi_MakeStatic_SKSE Auto
-Message Property MenuUi_Options Auto
-Message Property MenuUi_Options_SKSE Auto
-Message Property  MenuUi_Options_PositionerMenu Auto
-Message Property  MenuUi_Options_PositionerMenu_SKSE Auto
-Message Property Z_Ui Auto
-Message Property Y_Ui Auto
-Message Property X_Ui Auto
-Message Property Rotate_Ui Auto
-Message Property Z_Ui_SKSE Auto
-Message Property Y_Ui_SKSE Auto
-Message Property X_Ui_SKSE Auto
-Message Property Rotate_Ui_SKSE Auto
-MiscObject property MiscObj auto
-;Static Property StaticDummy Auto
+Actor Property PlayerREf  Auto
+GlobalVariable Property SSB_Positioner_SKSE_Global  Auto
+;GlobalVariable Property SSB_Auto_Leveling_Items  Auto ; Defualt = (1.0)
+Message Property MenuUi_Banner  Auto
+Message Property MenuUi_Banner_SKSE  Auto
+Message Property MenuUi_MakeStatic  Auto
+Message Property MenuUi_MakeStatic_SKSE  Auto
+Message Property MenuUi_Options  Auto
+Message Property MenuUi_Options_SKSE  Auto
+Message Property  MenuUi_Options_PositionerMenu  Auto
+Message Property  MenuUi_Options_PositionerMenu_SKSE  Auto
+Message Property Z_Ui  Auto
+Message Property Y_Ui  Auto
+Message Property X_Ui  Auto
+Message Property Rotate_Ui  Auto
+Message Property Z_Ui_SKSE  Auto
+Message Property Y_Ui_SKSE  Auto
+Message Property X_Ui_SKSE  Auto
+Message Property Rotate_Ui_SKSE  Auto
+MiscObject property MiscObj  Auto
+;Static Property StaticDummy  Auto
 
-Activator Property My_Banner Auto
-Spell Property Placeable_SKSE_Positioner_Toggle Auto
-;Spell Property Placeable_Auto_Level_Object_Global_Toggle_Spell Auto
+Activator Property My_Banner  Auto
+Spell Property SSB_SKSE_Positioner_Toggle  Auto
+;Spell Property SSB_Auto_Level_Object_Global_Toggle_Spell  Auto
 
 
 
@@ -55,6 +55,7 @@ Placeable_Auto_Level_Object_Global_Toggle_Spell = Game.GetFormFromFile(0x00DE456
  ;-------------------------Auto-Level-Object--------------------------    
     Placeable_Auto_Leveling_Items = Game.GetFormFromFile(0x00DD0161, "LvxMagicks-CampfireUnleashed.Esm") as GlobalVariable
     ;debug.Notification(Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue())
+    Debug.Trace("[LVX-SSS] " + Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue()
    
 If (Placeable_Auto_Leveling_Items.GetValue() == 0)
     GoToState("Auto_Level")
@@ -64,6 +65,7 @@ If (Placeable_Auto_Leveling_Items.GetValue() == 0)
       ;GetValueint
     ; DO Nothing
     ;debug.Notification("Object Auto-Level Not Working")
+    Debug.Trace("[LVX-SSS] Object Auto-Level Not Working")
  EndIf
 EndEvent
 
@@ -72,11 +74,14 @@ Event OnBeginState()
     If (Placeable_Auto_Leveling_Items.GetValue() == 1)
     
     ;debug.Notification("Object Auto-Leveled OFF")
+    
+    Debug.Trace("[LVX-SSS] Object Auto-Leveled OFF")
 
    Else
 
      Self.SetAngle(0.0, 0.0, Self.GetAngleZ()) ; Default
     ;debug.Notification("Object Auto-Level System Working")
+    Debug.Trace("[LVX-SSS] Object Auto-Level System Working")
     
 
     EndIf
@@ -96,6 +101,7 @@ Endevent
  Function Menu(Int aiButton = 0)
    aiButton =MenuUi_Banner.show()
       ;Debug.Notification("Legacy Positioner UI Active")
+      Debug.Trace("[LVX-SSS] Legacy Positioner UI Active")
     If aiButton == 1
         Z_Menu()
     ElseIf aiButton == 2
@@ -106,6 +112,7 @@ Endevent
     ElseIf aiButton == 4
     Rotate_Menu()
     ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")
+    Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
     Utility.wait(0.1)
  
      

@@ -2,35 +2,35 @@ Scriptname Placeable_MISC_Adjust_Deploy extends ObjectReference
 
 ;====================================================================================
 
-Sound Property SoundFX Auto
-Activator Property PlaceableObject_Ind Auto
-Activator Property Placeable_Scripted_Act Auto
-MiscObject Property Misc_ObjectKit Auto
-MiscObject Property MiscObj Auto
-Message Property MenuUi_Misc_Adjust_MSG Auto
+Sound Property SoundFX  Auto
+Activator Property PlaceableObject_Ind  Auto
+Activator Property SSB_Scripted_Act  Auto
+MiscObject Property Misc_ObjectKit  Auto
+MiscObject Property MiscObj  Auto
+Message Property MenuUi_Misc_Adjust_MSG  Auto
 
 ObjectReference Useable_Obj_Act
        
-Bool Property IsOptionState Auto
+Bool Property IsOptionState  Auto
 Bool Loaded
 
 
 
-Message Property MenuUi Auto
-Message Property MenuUi_SKSE Auto
-Message Property MenuUi_MakeStatic Auto
-Message Property MenuUi_MakeStatic_SKSE Auto
-Message Property MenuUi_Options Auto
-Message Property MenuUi_Options_SKSE Auto
-Message Property  MenuUi_Options_PositionerMenu Auto
-Message Property  MenuUi_Options_PositionerMenu_SKSE Auto
-Message Property Z_Ui Auto
-Message Property Y_Ui Auto
-Message Property X_Ui Auto
-Message Property Rotate_Ui Auto
-Actor Property PlayerRef Auto
-Static Property StaticDummy Auto
-Activator Property My_Activator_Static Auto
+Message Property MenuUi  Auto
+Message Property MenuUi_SKSE  Auto
+Message Property MenuUi_MakeStatic  Auto
+Message Property MenuUi_MakeStatic_SKSE  Auto
+Message Property MenuUi_Options  Auto
+Message Property MenuUi_Options_SKSE  Auto
+Message Property  MenuUi_Options_PositionerMenu  Auto
+Message Property  MenuUi_Options_PositionerMenu_SKSE  Auto
+Message Property Z_Ui  Auto
+Message Property Y_Ui  Auto
+Message Property X_Ui  Auto
+Message Property Rotate_Ui  Auto
+Actor Property PlayerRef  Auto
+Static Property StaticDummy  Auto
+Activator Property My_Activator_Static  Auto
 Event OnLoad()
     Loaded = True
     

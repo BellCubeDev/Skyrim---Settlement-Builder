@@ -1,28 +1,28 @@
 Scriptname Placeable_ItemAdjustment_SKSE extends ObjectReference  
 
 
-Actor Property PlayerREf Auto
-GlobalVariable Property Placeable_Positioner_SKSE_Global Auto
-Message Property MenuUi Auto
-Message Property MenuUi_SKSE Auto
-Message Property MenuUi_MakeStatic Auto
-Message Property MenuUi_MakeStatic_SKSE Auto
-Message Property MenuUi_Options Auto
-Message Property MenuUi_Options_SKSE Auto
-Message Property  MenuUi_Options_PositionerMenu Auto
-Message Property  MenuUi_Options_PositionerMenu_SKSE Auto
-Message Property Z_Ui Auto
-Message Property Y_Ui Auto
-Message Property X_Ui Auto
-Message Property Rotate_Ui Auto
-Message Property Z_Ui_SKSE Auto
-Message Property Y_Ui_SKSE Auto
-Message Property X_Ui_SKSE Auto
-Message Property Rotate_Ui_SKSE Auto
-MiscObject property MiscObj auto
-Activator Property My_Activator_Static Auto
-Static Property StaticDummy Auto
-Spell Property Placeable_SKSE_Positioner_Toggle Auto
+Actor Property PlayerREf  Auto
+GlobalVariable Property SSB_Positioner_SKSE_Global  Auto
+Message Property MenuUi  Auto
+Message Property MenuUi_SKSE  Auto
+Message Property MenuUi_MakeStatic  Auto
+Message Property MenuUi_MakeStatic_SKSE  Auto
+Message Property MenuUi_Options  Auto
+Message Property MenuUi_Options_SKSE  Auto
+Message Property  MenuUi_Options_PositionerMenu  Auto
+Message Property  MenuUi_Options_PositionerMenu_SKSE  Auto
+Message Property Z_Ui  Auto
+Message Property Y_Ui  Auto
+Message Property X_Ui  Auto
+Message Property Rotate_Ui  Auto
+Message Property Z_Ui_SKSE  Auto
+Message Property Y_Ui_SKSE  Auto
+Message Property X_Ui_SKSE  Auto
+Message Property Rotate_Ui_SKSE  Auto
+MiscObject property MiscObj  Auto
+Activator Property My_Activator_Static  Auto
+Static Property StaticDummy  Auto
+Spell Property SSB_SKSE_Positioner_Toggle  Auto
 
 
 
@@ -43,6 +43,7 @@ Function Menu(Int aiButton = 0)
  
    aiButton = MenuUi.show()
       ;Debug.Notification("Legacy Positioner UI Active")
+      Debug.Trace("[LVX-SSS] Legacy Positioner UI Active")
     If aiButton == 1
         Z_Menu()
     ElseIf aiButton == 2
@@ -53,6 +54,7 @@ Function Menu(Int aiButton = 0)
       ElseIf aiButton == 4
     Rotate_Menu()
     ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")
+    Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
     Utility.wait(0.1)
  
      
@@ -307,7 +309,10 @@ Function MenuUi_SKSE(Bool abFadeIn = False)
    Int aiButton =  MenuUi_SKSE.show()       
       
 
-       ;Debug.Notification("SKSE Positioner Active")
+       ;Debug.Notification("SKSE Positioner Active")       
+      
+
+       Debug.Trace("[LVX-SSS] SKSE Positioner Active")
     If aiButton == 1
         Z_Menu_SKSE()
     ElseIf aiButton == 2
@@ -318,6 +323,7 @@ Function MenuUi_SKSE(Bool abFadeIn = False)
       ElseIf aiButton == 4
     Rotate_Menu_SKSE()
     ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")
+    Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
     Utility.wait(0.1)
  
      

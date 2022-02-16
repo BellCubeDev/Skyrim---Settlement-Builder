@@ -5,7 +5,7 @@ import debug
 
 
 
-Flora Property Plant01 Auto
+Flora Property Plant01  Auto
 Int Property iResetHours = 72 Auto
 
 Event OnActivate(ObjectReference akActionRef)

@@ -1,8 +1,8 @@
 Scriptname Placeable_Debug_Messagebox extends ObjectReference  
-String Property MyMessage Auto
+String Property MyMessage  Auto
 {Shows the Quick Messagebox On Load}
-Message Property Placeable_AAA_UndertandCupsMenuUI Auto
-GlobalVariable Property Placeable_Global_IUnderstand01 Auto
+Message Property SSB_AAA_UndertandCupsMenuUI  Auto
+GlobalVariable Property SSB_Global_IUnderstand01  Auto
 {Shows the Aggrement Message }
 
 Bool Property doOnce = True Auto

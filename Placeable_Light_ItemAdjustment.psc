@@ -2,71 +2,71 @@ Scriptname Placeable_Light_ItemAdjustment extends ObjectReference
 
 
 
-Message Property MenuUi_Lights_MainMenu Auto
-Message Property MenuUi_Place_Light_Activator Auto
-Message Property MenuUi_Lights_MainMenu_Position Auto
-Message Property  Z_Ui Auto
-Message Property   Y_Ui Auto
-Message Property  X_Ui Auto
-Message Property Rotate_Ui Auto
+Message Property MenuUi_Lights_MainMenu  Auto
+Message Property MenuUi_Place_Light_Activator  Auto
+Message Property MenuUi_Lights_MainMenu_Position  Auto
+Message Property  Z_Ui  Auto
+Message Property   Y_Ui  Auto
+Message Property  X_Ui  Auto
+Message Property Rotate_Ui  Auto
 
-MiscObject property MiscObj auto
-Activator Property Activator01 Auto
-Static Property StaticDummy Auto
+MiscObject property MiscObj  Auto
+Activator Property Activator01  Auto
+Static Property StaticDummy  Auto
 ;--------------------------------------------------------SKSE Propertys-----------------
-Actor Property PlayerREf Auto
-GlobalVariable Property Placeable_Positioner_SKSE_Global Auto
-Message Property MenuUi Auto
-Message Property MenuUi_SKSE Auto
-Message Property MenuUi_MakeStatic Auto
-Message Property MenuUi_MakeStatic_SKSE Auto
-Message Property MenuUi_Options Auto
-Message Property MenuUi_Options_SKSE Auto
-Message Property  MenuUi_Options_PositionerMenu Auto
-Message Property  MenuUi_Options_PositionerMenu_SKSE Auto
+Actor Property PlayerREf  Auto
+GlobalVariable Property SSB_Positioner_SKSE_Global  Auto
+Message Property MenuUi  Auto
+Message Property MenuUi_SKSE  Auto
+Message Property MenuUi_MakeStatic  Auto
+Message Property MenuUi_MakeStatic_SKSE  Auto
+Message Property MenuUi_Options  Auto
+Message Property MenuUi_Options_SKSE  Auto
+Message Property  MenuUi_Options_PositionerMenu  Auto
+Message Property  MenuUi_Options_PositionerMenu_SKSE  Auto
 
-Message Property Z_Ui_SKSE Auto
-Message Property Y_Ui_SKSE Auto
-Message Property X_Ui_SKSE Auto
-Message Property Rotate_Ui_SKSE Auto
+Message Property Z_Ui_SKSE  Auto
+Message Property Y_Ui_SKSE  Auto
+Message Property X_Ui_SKSE  Auto
+Message Property Rotate_Ui_SKSE  Auto
 
 
-float Property Hight01 Auto
+float Property Hight01  Auto
 {Hight For Light Source}
-float Property Hight02 Auto
+float Property Hight02  Auto
 {Hight For Light Source}
-float Property Hight03 Auto
+float Property Hight03  Auto
 {Hight For Light Source}
-float Property Hight04 Auto
+float Property Hight04  Auto
 {Hight For Light Source}
-float Property Hight05 Auto
+float Property Hight05  Auto
 {Hight For Light Source}
 
-Light Property MyLight00 Auto;----Lights for the Lamps
+Light Property MyLight00  Auto;----Lights for the Lamps
 {Light Source}
-Light Property MyLight01 Auto;----Lights for the Lamps
+Light Property MyLight01  Auto;----Lights for the Lamps
 {Light Source}
-Light Property MyLight02 Auto
+Light Property MyLight02  Auto
 {Light Source}
-Light Property MyLight03 Auto
+Light Property MyLight03  Auto
 {Light Source}
-Light Property MyLight04 Auto
+Light Property MyLight04  Auto
 {Light Source}
-Light Property MyLight05 Auto
+Light Property MyLight05  Auto
 {Light Source}
-Spell Property Placeable_SKSE_Positioner_Toggle Auto
+Spell Property SSB_SKSE_Positioner_Toggle  Auto
 
 Formlist Placeable_A_DeleteAll
 
-Static property Static01_Extra Auto
+Static property Static01_Extra  Auto
 {Extra Static to Place}
-Static property Static02_Extra Auto
+Static property Static02_Extra  Auto
 {Extra Static to Place}
-Static property Static03_Extra Auto
+Static property Static03_Extra  Auto
 {Extra Static to Place}
-Static property Static04_Extra Auto
+Static property Static04_Extra  Auto
 {Extra Static to Place}
-Static property Static05_Extra Auto
+Static property Static05_Extra  Auto
 {Extra Static to Place}
 
 
@@ -88,6 +88,7 @@ Placeable_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - S
 
     Placeable_Auto_Leveling_Items = Game.GetFormFromFile(0x00DD0161, "LvxMagick - Skyrim - Settlement Builder.Esp") as GlobalVariable ; Auto Level Object Global Var Formlist
     ;debug.Notification(Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue())
+    Debug.Trace("[LVX-SSS] " + Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue()
    
 If (Placeable_Auto_Leveling_Items.GetValue() == 0)
     GoToState("Auto_Level")
@@ -97,6 +98,7 @@ If (Placeable_Auto_Leveling_Items.GetValue() == 0)
       ;GetValueint
     ; DO Nothing
     ;debug.Notification("Object Auto-Level Not Working")
+    Debug.Trace("[LVX-SSS] Object Auto-Level Not Working")
  EndIf
 EndEvent
 
@@ -105,11 +107,14 @@ Event OnBeginState()
     If (Placeable_Auto_Leveling_Items.GetValue() == 1)
     
     ;debug.Notification("Object Auto-Leveled OFF")
+    
+    Debug.Trace("[LVX-SSS] Object Auto-Leveled OFF")
 
    Else
 
      Self.SetAngle(0.0, 0.0, Self.GetAngleZ()) ; Default
     ;debug.Notification("Object Auto-Level System Working")
+    Debug.Trace("[LVX-SSS] Object Auto-Level System Working")
     
 
     EndIf
@@ -698,6 +703,7 @@ Function MenuUi_Options_SKSE(Int aiButton = 0, Bool abFadeOut = False)
 
 ElseIf aiButton == 3
    Debug.Notification("Use the Options Lesser Power To Delete All")
+   Debug.Trace("[LVX-SSS] Use the Options Lesser Power To Delete All")
 
    
 EndIf
