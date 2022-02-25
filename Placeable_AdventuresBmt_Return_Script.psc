@@ -1,4 +1,4 @@
-Scriptname Placeable_AdventuresBmt_Return_Script extends ObjectReference  
+Scriptname SSB_AdventuresBmt_Return_Script extends ObjectReference  
 
 
 

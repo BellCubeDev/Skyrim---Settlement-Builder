@@ -1,4 +1,4 @@
-Scriptname Placeable_ButterChurn_Script extends ObjectReference  
+Scriptname SSB_ButterChurn_Script extends ObjectReference  
 
 
 Int Property iResetHours = 12 Auto

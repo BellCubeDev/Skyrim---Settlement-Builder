@@ -1,4 +1,4 @@
-Scriptname Placeable_FastMerchant_Script extends activemagiceffect  
+Scriptname SSB_FastMerchant_Script extends activemagiceffect  
 
 Message Property MyMessage  Auto
 Actor Property Merchant  Auto

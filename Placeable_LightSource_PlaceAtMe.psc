@@ -1,4 +1,4 @@
-Scriptname Placeable_LightSource_PlaceAtMe extends ObjectReference  
+Scriptname SSB_LightSource_PlaceAtMe extends ObjectReference  
 
 
 

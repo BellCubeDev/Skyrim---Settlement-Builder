@@ -1,4 +1,4 @@
-Scriptname Placeable_DoorHome_Script extends ObjectReference  
+Scriptname SSB_DoorHome_Script extends ObjectReference  
 
 
 

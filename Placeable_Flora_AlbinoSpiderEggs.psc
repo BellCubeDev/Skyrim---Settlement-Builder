@@ -1,4 +1,4 @@
-Scriptname Placeable_Flora_AlbinoSpiderEggs extends ObjectReference  
+Scriptname SSB_Flora_AlbinoSpiderEggs extends ObjectReference  
 
 
 Actorbase Property Enemy  Auto

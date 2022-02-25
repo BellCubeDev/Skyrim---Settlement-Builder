@@ -1,4 +1,4 @@
-Scriptname Placeable_Furniture_ItemAdjustment extends ObjectReference  
+Scriptname SSB_Furniture_ItemAdjustment extends ObjectReference  
 
 
  
@@ -34,17 +34,17 @@ Spell Property SSB_SKSE_Positioner_Toggle  Auto
 
 
 
-FormList Placeable_A_DeleteAll
+FormList SSB_A_DeleteAll
 
 Event OnInIt()
 ;============================================Delete All Fomlist========================================================
-  Placeable_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;|
+  SSB_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;|
 ;======================================================================================================================
 EndEvent
 
 Event OnActivate(ObjectReference akActionRef)
   If SKSE.GetVersion() > 0                                   ;is SKSE present
-    If (Placeable_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
+    If (SSB_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
       MenuUi_SKSE()                                              ;use SKSE menu
     Else                                                       ;otherwise 
       Menu()                                                     ;use regular menu
@@ -291,7 +291,7 @@ aiButton= MenuUi_Options_PositionerMenu.Show()
   
 
    ElseIf aiButton == 1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 
 EndIf
 EndIf
@@ -311,7 +311,7 @@ Function MenuUi_DeployFurnitureStatic_Act(Bool abMenu = True, Int aiButton = 0) 
     ElseIf aiButton == 1
     DisableNoWait(True)
     Disable(True)
-    Placeable_A_DeleteAll.AddForm(PlaceatMe(Furniture_Act))
+    SSB_A_DeleteAll.AddForm(PlaceatMe(Furniture_Act))
     ;Debug.MessageBox("Trigger Pulled - Furniture")       
     DeleteWhenAble()
     Delete()
@@ -320,7 +320,7 @@ Function MenuUi_DeployFurnitureStatic_Act(Bool abMenu = True, Int aiButton = 0) 
     ElseIf aiButton == 2
     DisableNoWait(True)
     Disable(True)
-    Placeable_A_DeleteAll.AddForm(PlaceatMe(StaticDummy))       
+    SSB_A_DeleteAll.AddForm(PlaceatMe(StaticDummy))       
     Delete()
     ;Debug.MessageBox("Trigger Pulled - Static")
     
@@ -627,7 +627,7 @@ aiButton= MenuUi_Options_PositionerMenu_SKSE.Show()
    
 
    ElseIf aiButton== 1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 EndIf
 EndIf
 EndFunction
@@ -648,7 +648,7 @@ Function MenuUi_DeployFurnitureStatic_Act_SKSE(Int aiButton = 0) ;Make Static
     ElseIf aiButton == 1
     DisableNoWait(True)
     Self.Disable(True)
-    Placeable_A_DeleteAll.AddForm(PlaceatMe(Furniture_Act))       
+    SSB_A_DeleteAll.AddForm(PlaceatMe(Furniture_Act))       
     ;Debug.MessageBox("Furniture")
     Delete()
     
@@ -657,7 +657,7 @@ Function MenuUi_DeployFurnitureStatic_Act_SKSE(Int aiButton = 0) ;Make Static
     ElseIf aiButton == 2
     DisableNoWait(True)
     Self.Disable(True)
-    Placeable_A_DeleteAll.AddForm(PlaceatMe(StaticDummy))
+    SSB_A_DeleteAll.AddForm(PlaceatMe(StaticDummy))
     ;Debug.MessageBox("Static")       
     Delete()
     

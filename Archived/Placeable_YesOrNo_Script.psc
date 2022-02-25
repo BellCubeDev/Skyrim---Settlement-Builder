@@ -1,4 +1,4 @@
-Scriptname Placeable_YesOrNo_Script extends activemagiceffect  
+Scriptname SSB_YesOrNo_Script extends activemagiceffect  
 
 ; BELL: I LIKE your array experiment!
  

@@ -1,4 +1,4 @@
-Scriptname Placeable_Container_Close_Script extends ObjectReference  
+Scriptname SSB_Container_Close_Script extends ObjectReference  
 
 Actor Property PlayerRef  Auto
 

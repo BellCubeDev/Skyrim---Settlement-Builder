@@ -1,4 +1,4 @@
-Scriptname Placeable_Banner_Script extends ObjectReference  
+Scriptname SSB_Banner_Script extends ObjectReference  
 
 
 
@@ -69,7 +69,7 @@ Function PosMenu(ObjectReference Object, Int iButton = -1,  Bool abMenu = True)
         ElseIf iButton == 5                    ;Exit
             Object.Disable()
             Object.Delete()
-                    Object.PlaceatMe(Placeable_Scripted_Act)       
+                    Object.PlaceatMe(SSB_Scripted_Act)       
                      Self.DeleteWhenAble()
                       Delete()
                     abMenu = False

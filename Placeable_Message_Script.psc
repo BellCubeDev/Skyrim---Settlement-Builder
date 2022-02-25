@@ -1,4 +1,4 @@
-Scriptname Placeable_Message_Script extends ObjectReference  
+Scriptname SSB_Message_Script extends ObjectReference  
 
 {Show a message or notification on activate with the option of having this happen only once.}
 

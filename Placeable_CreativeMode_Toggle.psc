@@ -1,4 +1,4 @@
-Scriptname Placeable_CreativeMode_Toggle extends activemagiceffect  
+Scriptname SSB_CreativeMode_Toggle extends activemagiceffect  
 
 
 ObjectReference Property CraftingStation  Auto

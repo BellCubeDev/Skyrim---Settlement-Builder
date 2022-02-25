@@ -1,3 +1,3 @@
-Scriptname Placeable_CampfireUnleashed_Quest extends Quest  
+Scriptname SSB_CampfireUnleashed_Quest extends Quest  
 
 WICourierScript Property pWIcourier  Auto  

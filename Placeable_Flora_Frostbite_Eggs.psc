@@ -1,4 +1,4 @@
-Scriptname Placeable_Flora_Frostbite_Eggs extends ObjectReference  
+Scriptname SSB_Flora_Frostbite_Eggs extends ObjectReference  
 
 
 

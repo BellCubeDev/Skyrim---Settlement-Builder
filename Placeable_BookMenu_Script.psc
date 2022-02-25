@@ -1,4 +1,4 @@
-Scriptname Placeable_BookMenu_Script extends ObjectReference  
+Scriptname SSB_BookMenu_Script extends ObjectReference  
 
 
 Message Property ManualMenu  Auto  
@@ -471,7 +471,8 @@ Function ManualMenu_AddSpells_Creative_Special(Int aiButton = 0)
 
     ElseIf aiButton == 2
     Game.GetPlayer().AddSpell(CreativeStorageSpell)  
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
    ElseIf aiButton == 3
         
@@ -495,7 +496,8 @@ Function ManualMenu_AddSpells_Utilities(Int aiButton = 0)
 
     ElseIf aiButton == 2
    Game.GetPlayer().AddSpell(TCLSpell)   
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
   ElseIf aiButton == 3
   Game.GetPlayer().AddSpell(ToggleGrassSpell)
@@ -519,7 +521,8 @@ Function ManualMenu_RemoveSpells_Utilities(Int aiButton = 0)
 
     ElseIf aiButton == 2
    Game.GetPlayer().RemoveSpell(TCLSpell)   
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
   ElseIf aiButton == 3
   Game.GetPlayer().RemoveSpell(ToggleGrassSpell)

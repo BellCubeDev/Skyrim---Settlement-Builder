@@ -1,4 +1,4 @@
-Scriptname Placeable_DoorAdjustment_Script extends ObjectReference  
+Scriptname SSB_DoorAdjustment_Script extends ObjectReference  
 
 
 ObjectReference Property Activate_Object  Auto 

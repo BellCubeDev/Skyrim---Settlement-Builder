@@ -1,4 +1,4 @@
-Scriptname Placeable_Container_Adjustment extends ObjectReference  
+Scriptname SSB_Container_Adjustment extends ObjectReference  
 
   
 
@@ -42,27 +42,27 @@ Activator Property My_Activator_Static  Auto
 Static Property StaticDummy  Auto
 Spell Property SSB_SKSE_Positioner_Toggle  Auto
 
-FormList Placeable_A_DeleteAll; RESET MODE Formlist!!!
+FormList SSB_A_DeleteAll; RESET MODE Formlist!!!
 
 
 ;----------------------------------------Auto - Object Leveling - System ----------------------------------------------------------------------------
-Spell Placeable_Auto_Level_Object_Global_Toggle_Spell
-GlobalVariable Placeable_Auto_Leveling_Items
+Spell SSB_Auto_Level_Object_Global_Toggle_Spell
+GlobalVariable SSB_Auto_Leveling_Items
 
 Event OnInit() ; This event will run once, when the script is initialized
     BlockActivation(self) 
                                                 ;Caution
 ;===========================================Delete All Fomlist Property================================================
-Placeable_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;  | 
+SSB_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;  | 
 ;======================================================================================================================
 
-    Placeable_Auto_Level_Object_Global_Toggle_Spell = Game.GetFormFromFile(0x00DE456D, "LvxMagicks-CampfireUnleashed.Esm") as Spell ;Auto Level Object Spell Formlist
+    SSB_Auto_Level_Object_Global_Toggle_Spell = Game.GetFormFromFile(0x00DE456D, "LvxMagicks-CampfireUnleashed.Esm") as Spell ;Auto Level Object Spell Formlist
 
-    Placeable_Auto_Leveling_Items = Game.GetFormFromFile(0x00DD0161, "LvxMagicks-CampfireUnleashed.Esm") as GlobalVariable ; Auto Level Object Global Var Formlist
-    ;debug.Notification(Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue())
-    Debug.Trace("[LVX-SSS] " + Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue()
+    SSB_Auto_Leveling_Items = Game.GetFormFromFile(0x00DD0161, "LvxMagicks-CampfireUnleashed.Esm") as GlobalVariable ; Auto Level Object Global Var Formlist
+    ;debug.Notification(SSB_Auto_Leveling_Items+": "+SSB_Auto_Leveling_Items.GetValue())
+    Debug.Trace("[LVX-SSS] " + SSB_Auto_Leveling_Items+": "+SSB_Auto_Leveling_Items.GetValue()
    
-If (Placeable_Auto_Leveling_Items.GetValue() == 0)
+If (SSB_Auto_Leveling_Items.GetValue() == 0)
     GoToState("Auto_Level")
     
 
@@ -76,7 +76,7 @@ EndEvent
 
 State Auto_Level
 Event OnBeginState()
-    If (Placeable_Auto_Leveling_Items.GetValue() == 1)
+    If (SSB_Auto_Leveling_Items.GetValue() == 1)
     
     ;debug.Notification("Object Auto-Leveled OFF")
     
@@ -100,7 +100,7 @@ Event OnActivate(ObjectReference akActionRef)
 BlockActivation(self)
 
  If SKSE.GetVersion() > 0                                   ;is SKSE present
-    If (Placeable_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
+    If (SSB_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
       MenuUi_SKSE()                                              ;use SKSE menu
     Else                                                       ;otherwise 
       Menu()                                                     ;use regular menu
@@ -198,7 +198,7 @@ EndFunction
 
     Function Auto_Level_Button()
 
-    If (Placeable_Auto_Leveling_Items.GetValue() == 1)
+    If (SSB_Auto_Leveling_Items.GetValue() == 1)
     Self.SetAngle(0.0, 0.0, Self.GetAngleZ())
     
 
@@ -395,17 +395,17 @@ Function Bury_Container(Int aiButton = 0)
 If (Game.GetPlayer().GetItemCount(Shovel01) >= 1) || (Game.GetPlayer().GetItemCount(Shovel02) >= 1)
 
    Game.FadeOutGame(True, True, 2.0, 3.0)            
-   Placeable_NPCHumanShovel.Play(Game.GetPlayer())
+   SSB_NPCHumanShovel.Play(Game.GetPlayer())
    Utility.Wait(1.0) 
-   Placeable_NPCHumanShovel.Play(Game.GetPlayer())
+   SSB_NPCHumanShovel.Play(Game.GetPlayer())
    Utility.Wait(1.0)  
-   Placeable_NPCHumanShovel.Play(Game.GetPlayer())
+   SSB_NPCHumanShovel.Play(Game.GetPlayer())
    Utility.Wait(1.0)
-   Placeable_NPCHumanShovelDump.Play(Game.GetPlayer())
+   SSB_NPCHumanShovelDump.Play(Game.GetPlayer())
    Game.FadeOutGame(False, True, 5.0, 3.0)
    DisableNoWait(True)
    Disable(True)
-   Placeable_A_DeleteAll.AddForm(PlaceatMe(Activator_Dirt_Pile))   
+   SSB_A_DeleteAll.AddForm(PlaceatMe(Activator_Dirt_Pile))   
    DeleteWhenAble()
    Delete()
   
@@ -763,10 +763,10 @@ aiButton= MenuUi_Options_PositionerMenu.Show()
   
 
    ElseIf aiButton==1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 
    ElseIf aiButton == 2
-   Placeable_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
+   SSB_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
 
 EndIf
 EndIf
@@ -791,7 +791,7 @@ Function MenuUi_Options_SKSE(Int aiButton = 0, Bool abFadeOut = False)
    MenuUi_Options_PositionerMenu_SKSE()
 
    ElseIf aiButton == 2
-   Placeable_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
+   SSB_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
    
 EndIf
 EndIf
@@ -806,7 +806,7 @@ aiButton= MenuUi_Options_PositionerMenu_SKSE.Show()
    
 
    ElseIf aiButton==1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 EndIf
 EndIf
 EndFunction
@@ -826,14 +826,14 @@ Function MenuUi_Make_Container_Permanent_SKSE(Int aiButton = 0) ;Make Container 
     ElseIf aiButton == 1              ;Make Container Permanent Static
     DisableNoWait(True)
     Disable(True)
-    Placeable_A_DeleteAll.AddForm(PlaceatMe(Permanent_ContainerAct)) ;Adds to List
+    SSB_A_DeleteAll.AddForm(PlaceatMe(Permanent_ContainerAct)) ;Adds to List
     DeleteWhenAble()
     Delete()
     
    
    ElseIf aiButton == 2
    Disable(True)
-   Placeable_A_DeleteAll.AddForm(PlaceatMe(DummyActivator)) ;Adds to List
+   SSB_A_DeleteAll.AddForm(PlaceatMe(DummyActivator)) ;Adds to List
    DeleteWhenAble()
    Delete()
    

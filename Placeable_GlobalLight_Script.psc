@@ -1,4 +1,4 @@
-Scriptname Placeable_GlobalLight_Script extends ObjectReference  
+Scriptname SSB_GlobalLight_Script extends ObjectReference  
 
 
 

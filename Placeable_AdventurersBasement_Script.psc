@@ -1,4 +1,4 @@
-Scriptname Placeable_AdventurersBasement_Script extends ObjectReference  
+Scriptname SSB_AdventurersBasement_Script extends ObjectReference  
 
 
 ;====================================================================================
@@ -58,7 +58,7 @@ Function PosMenu(ObjectReference akObjectToMove, Bool abDoWaits = False)
     Bool abMenu = True
 
     While abMenu
-        iButton = Placeable_AdvBsmtDoorMsg.Show() ; 0 through 5
+        iButton = SSB_AdvBsmtDoorMsg.Show() ; 0 through 5
 
         ; MOVEMENT
         ; Move Up

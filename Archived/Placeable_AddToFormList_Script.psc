@@ -1,4 +1,4 @@
-Scriptname Placeable_AddToFormList_Script extends ObjectReference  
+Scriptname SSB_AddToFormList_Script extends ObjectReference  
 
 
 

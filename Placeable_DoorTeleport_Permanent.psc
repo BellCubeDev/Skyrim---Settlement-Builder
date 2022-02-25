@@ -1,4 +1,4 @@
-Scriptname Placeable_DoorTeleport_Permanent extends ObjectReference  
+Scriptname SSB_DoorTeleport_Permanent extends ObjectReference  
 
 
 

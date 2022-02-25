@@ -1,4 +1,4 @@
-Scriptname Placeable_BootsOBlind_Script extends ObjectReference  
+Scriptname SSB_BootsOBlind_Script extends ObjectReference  
 
 Actor Property PlayerRef  Auto
 Message Property DebugNotification  Auto

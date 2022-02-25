@@ -1,4 +1,4 @@
-Scriptname Placeable_CU_Options extends activemagiceffect  
+Scriptname SSB_CU_Options extends activemagiceffect  
 
 
 Actor Property PlayerRef  Auto
@@ -68,14 +68,14 @@ EndEvent
 
 
 Function Menu(Int aiButton = 0)
-     aiButton = Placeable_AAA_ManualMenu_Options.show()
+     aiButton = SSB_AAA_ManualMenu_Options.show()
 
     If aiButton == 1
-       Placeable_PowerConfig_Spell_02.Cast(Game.GetPlayer())
+       SSB_PowerConfig_Spell_02.Cast(Game.GetPlayer())
     ElseIf aiButton == 2
-       Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+       SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
     ElseIf aiButton == 3
-       Placeable_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
+       SSB_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
     ElseIf aiButton == 4
         Delete_All()
      EndIf
@@ -496,7 +496,8 @@ Function ManualMenu_AddSpells_Creative_Special(Int aiButton = 0)
 
     ElseIf aiButton == 2
     Game.GetPlayer().AddSpell(CreativeStorageSpell)  
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
    ElseIf aiButton == 3
         
@@ -520,7 +521,8 @@ Function ManualMenu_AddSpells_Utilities(Int aiButton = 0)
 
     ElseIf aiButton == 2
    Game.GetPlayer().AddSpell(TCLSpell)   
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
   ElseIf aiButton == 3
   Game.GetPlayer().AddSpell(ToggleGrassSpell)
@@ -544,7 +546,8 @@ Function ManualMenu_RemoveSpells_Utilities(Int aiButton = 0)
 
     ElseIf aiButton == 2
    Game.GetPlayer().RemoveSpell(TCLSpell)   
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
   ElseIf aiButton == 3
   Game.GetPlayer().RemoveSpell(ToggleGrassSpell)
@@ -559,7 +562,7 @@ EndFunction
 
 
 Function Delete_All()
-    Int aiButton = placeable_AAA_Delete_All.show()
+    Int aiButton = SSB_AAA_Delete_All.show()
 
     If  aiButton == 0 
         Menu()
@@ -568,7 +571,7 @@ Function Delete_All()
     ElseIf aiButton == 3; Yes
         Game.FadeOutGame(True, True, 0, 2)
         Utility.Wait(1)
-        DeleteAllItemsInList(Placeable_A_DeleteAll, False, True)
+        DeleteAllItemsInList(SSB_A_DeleteAll, False, True)
         Game.FadeOutGame(False, True, 2.0, 2.0) 
         ;Debug.Notification("Menu selection: "+aiButton+". Deleting...") 
         Debug.Trace("[LVX-SSS] Menu selection: "+aiButton+". Deleting...")

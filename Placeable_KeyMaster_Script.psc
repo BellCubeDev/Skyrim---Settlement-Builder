@@ -1,4 +1,4 @@
-Scriptname Placeable_KeyMaster_Script extends ObjectReference  
+Scriptname SSB_KeyMaster_Script extends ObjectReference  
 
 
 

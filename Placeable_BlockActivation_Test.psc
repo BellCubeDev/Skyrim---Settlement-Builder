@@ -1,4 +1,4 @@
-Scriptname Placeable_BlockActivation_Test extends ObjectReference  
+Scriptname SSB_BlockActivation_Test extends ObjectReference  
 
 
 Function Initialize()

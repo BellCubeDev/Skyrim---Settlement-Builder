@@ -1,4 +1,4 @@
-Scriptname Placeable_TowerOfWolf_Key extends ObjectReference  
+Scriptname SSB_TowerOfWolf_Key extends ObjectReference  
 
 ;Original universal script created by Darkfox127
 ;Any potential problems which may arise from this script being changed from the original are the sole responsibility of the mod author making the changes.

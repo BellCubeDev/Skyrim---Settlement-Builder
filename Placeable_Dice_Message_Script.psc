@@ -1,4 +1,4 @@
-Scriptname Placeable_Dice_Message_Script extends ObjectReference
+Scriptname SSB_Dice_Message_Script extends ObjectReference
 
 Message[] Property OutputMessages  Auto
 

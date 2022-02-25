@@ -1,4 +1,4 @@
-Scriptname Placeable_AdventuresBsmt_Home_Script extends ObjectReference  
+Scriptname SSB_AdventuresBsmt_Home_Script extends ObjectReference  
 
 
 Actor Property PlayerRef  Auto

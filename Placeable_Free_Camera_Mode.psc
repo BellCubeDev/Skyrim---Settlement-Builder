@@ -1,4 +1,4 @@
-Scriptname Placeable_Free_Camera_Mode extends activemagiceffect  
+Scriptname SSB_Free_Camera_Mode extends activemagiceffect  
 
 
 Actor Property PlayerRef  Auto

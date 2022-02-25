@@ -1,4 +1,4 @@
-Scriptname Placeable_Container_Adjustment_SKSE extends ObjectReference  
+Scriptname SSB_Container_Adjustment_SKSE extends ObjectReference  
 
 
   
@@ -54,7 +54,7 @@ Endevent
 Event OnActivate(ObjectReference akActionRef)
 BlockActivation(self)
 If SKSE.GetVersion() > 0                                   ;is SKSE present
-    If (Placeable_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
+    If (SSB_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
       MenuUi_SKSE()                                              ;use SKSE menu
     Else                                                       ;otherwise 
       Menu()                                                     ;use regular menu
@@ -345,13 +345,13 @@ Function Bury_Container(Int aiButton = 0)
 If (Game.GetPlayer().GetItemCount(Shovel01) >= 1) || (Game.GetPlayer().GetItemCount(Shovel02) >= 1)
 
    Game.FadeOutGame(True, True, 2.0, 3.0)            
-   Placeable_NPCHumanShovel.Play(Game.GetPlayer())
+   SSB_NPCHumanShovel.Play(Game.GetPlayer())
    Utility.Wait(1.0) 
-   Placeable_NPCHumanShovel.Play(Game.GetPlayer())
+   SSB_NPCHumanShovel.Play(Game.GetPlayer())
    Utility.Wait(1.0)  
-   Placeable_NPCHumanShovel.Play(Game.GetPlayer())
+   SSB_NPCHumanShovel.Play(Game.GetPlayer())
    Utility.Wait(1.0)
-   Placeable_NPCHumanShovelDump.Play(Game.GetPlayer())
+   SSB_NPCHumanShovelDump.Play(Game.GetPlayer())
    Game.FadeOutGame(False, True, 5.0, 3.0)
     DisableNoWait(True)
     Self.Disable(True)
@@ -666,7 +666,7 @@ aiButton= MenuUi_Options_PositionerMenu_SKSE.Show()
    
 
    ElseIf aiButton==1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 EndIf
 EndIf
 EndFunction

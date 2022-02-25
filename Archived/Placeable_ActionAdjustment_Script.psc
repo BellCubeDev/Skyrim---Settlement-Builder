@@ -1,4 +1,4 @@
-Scriptname Placeable_ActionAdjustment_Script extends ObjectReference
+Scriptname SSB_ActionAdjustment_Script extends ObjectReference
 
 ObjectReference Property Activate_Object  Auto
 Message Property Menu_Action  Auto

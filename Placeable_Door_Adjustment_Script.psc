@@ -1,4 +1,4 @@
-Scriptname Placeable_Door_Adjustment_Script extends ObjectReference  
+Scriptname SSB_Door_Adjustment_Script extends ObjectReference  
 
 
 Message Property MenuUi_Door_MainMenu  Auto
@@ -32,27 +32,27 @@ Message Property Rotate_Ui_SKSE  Auto
 Spell Property SSB_SKSE_Positioner_Toggle  Auto
 ObjectReference Property Teleport_Activator  Auto
 
-Formlist Placeable_A_DeleteAll
+Formlist SSB_A_DeleteAll
 ;----------------------------------------Auto - Object Leveling - System ----------------------------------------------------------------------------
-Spell Placeable_Auto_Level_Object_Global_Toggle_Spell
-GlobalVariable Placeable_Auto_Leveling_Items
+Spell SSB_Auto_Level_Object_Global_Toggle_Spell
+GlobalVariable SSB_Auto_Leveling_Items
 
 Event OnInit() ; This event will run once, when the script is initialized
     
 ;===========================================Delete All Fomlist Property================================================
-Placeable_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;  | 
+SSB_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;  | 
 ;======================================================================================================================
 
 
   
-    Placeable_Auto_Level_Object_Global_Toggle_Spell = Game.GetFormFromFile(0x00DE456D, "LvxMagicks-CampfireUnleashed.Esm") as Spell ;Auto Level Object Spell Formlist
+    SSB_Auto_Level_Object_Global_Toggle_Spell = Game.GetFormFromFile(0x00DE456D, "LvxMagicks-CampfireUnleashed.Esm") as Spell ;Auto Level Object Spell Formlist
 
 
-    Placeable_Auto_Leveling_Items = Game.GetFormFromFile(0x00DD0161, "LvxMagicks-CampfireUnleashed.Esm") as GlobalVariable ; Auto Level Object Global Var Formlist
-    ;debug.Notification(Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue())
-    Debug.Trace("[LVX-SSS] " + Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue()
+    SSB_Auto_Leveling_Items = Game.GetFormFromFile(0x00DD0161, "LvxMagicks-CampfireUnleashed.Esm") as GlobalVariable ; Auto Level Object Global Var Formlist
+    ;debug.Notification(SSB_Auto_Leveling_Items+": "+SSB_Auto_Leveling_Items.GetValue())
+    Debug.Trace("[LVX-SSS] " + SSB_Auto_Leveling_Items+": "+SSB_Auto_Leveling_Items.GetValue()
    
-If (Placeable_Auto_Leveling_Items.GetValue() == 0)
+If (SSB_Auto_Leveling_Items.GetValue() == 0)
     GoToState("Auto_Level")
     
 
@@ -66,7 +66,7 @@ EndEvent
 
 State Auto_Level
 Event OnBeginState()
-    If (Placeable_Auto_Leveling_Items.GetValue() == 1)
+    If (SSB_Auto_Leveling_Items.GetValue() == 1)
     
     ;debug.Notification("Object Auto-Leveled OFF")
     
@@ -98,7 +98,7 @@ endEvent
 ;---------------------------------------------------SKSE CHECK---------------------------------------------------
 Event OnActivate(ObjectReference akActionRef)
     If akActionRef == Game.GetPlayer()&& SKSE.GetVersion() > 0                                   ;is SKSE present
-    If (Placeable_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
+    If (SSB_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
       MenuUi_SKSE()                                              ;use SKSE menu
     Else                                                       ;otherwise 
       Menu()                                                     ;use regular menu
@@ -152,7 +152,7 @@ EndFunction
 
     Function Auto_Level_Button()
 
-    If (Placeable_Auto_Leveling_Items.GetValue() == 1)
+    If (SSB_Auto_Leveling_Items.GetValue() == 1)
     Self.SetAngle(0.0, 0.0, Self.GetAngleZ())
     
 
@@ -352,10 +352,10 @@ aiButton= MenuUi_Options_PositionerMenu.Show()
   
 
    ElseIf aiButton==1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 
    ElseIf aiButton == 2
-   Placeable_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
+   SSB_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
 
 EndIf
 EndIf
@@ -667,7 +667,7 @@ Function MenuUi_Options_SKSE(Int aiButton = 0, Bool abFadeOut = False)
    MenuUi_Options_PositionerMenu()
 
    ElseIf aiButton == 2
-   Placeable_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
+   SSB_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
    
 EndIf
 EndIf
@@ -682,7 +682,7 @@ aiButton= MenuUi_Options_PositionerMenu_SKSE.Show()
    
 
    ElseIf aiButton==1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 EndIf
 EndIf
 EndFunction
@@ -696,7 +696,7 @@ Function MenuUi_PlaceActivator_SKSE(Int aiButton = 0) ;Place Door
     If aiButton == 1
     DisableNoWait(True)
     Self.Disable(True)
-    Placeable_A_DeleteAll.AddForm(PlaceatMe(Activator01))       
+    SSB_A_DeleteAll.AddForm(PlaceatMe(Activator01))       
     Delete()
     EndIf
 

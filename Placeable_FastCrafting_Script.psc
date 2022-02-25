@@ -1,4 +1,4 @@
-Scriptname Placeable_FastCrafting_Script extends activemagiceffect  
+Scriptname SSB_FastCrafting_Script extends activemagiceffect  
 
 
 ObjectReference Property CraftingStation  Auto

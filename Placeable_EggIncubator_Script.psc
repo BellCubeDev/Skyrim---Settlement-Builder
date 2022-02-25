@@ -1,4 +1,4 @@
-Scriptname Placeable_EggIncubator_Script extends ObjectReference  
+Scriptname SSB_EggIncubator_Script extends ObjectReference  
 
 
 Int Property iResetHours = 72 Auto

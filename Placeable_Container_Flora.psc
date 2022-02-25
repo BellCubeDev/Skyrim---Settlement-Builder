@@ -1,4 +1,4 @@
-Scriptname Placeable_Container_Flora extends ObjectReference  
+Scriptname SSB_Container_Flora extends ObjectReference  
 
 
 ObjectReference Property Activate_Object  Auto 
@@ -22,13 +22,13 @@ Sound Property SSB_NPCHumanShovel  Auto
 Sound Property SSB_NPCHumanShovelDump  Auto
 
 
-Formlist Placeable_A_DeleteAll 
+Formlist SSB_A_DeleteAll 
 
 
 Event OnInit() ; This event will run once, when the script is initialized
     
 ;===========================================Delete All Fomlist Property================================================
-Placeable_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;  | 
+SSB_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;  | 
 ;======================================================================================================================
 EndEvent
 
@@ -283,7 +283,7 @@ Function MenuUi_Make_NoneContainer_Static(Int aiButton = 0) ;Make Static
     ElseIf aiButton == 1
     DisableNoWait(True)
     Disable(True)
-    Placeable_A_DeleteAll.AddForm(PlaceatMe(StaticDummy))       
+    SSB_A_DeleteAll.AddForm(PlaceatMe(StaticDummy))       
     DeleteWhenAble()
     Delete()
     
@@ -303,17 +303,17 @@ Function Plant_Flora(Int aiButton = 0) ;Make Static
 If (Game.GetPlayer().GetItemCount(Shovel01) >= 1) || (Game.GetPlayer().GetItemCount(Shovel02) >= 1)
 
           Game.FadeOutGame(True, True, 2.0, 3.0)            
-   Placeable_NPCHumanShovel.Play(Game.GetPlayer())
+   SSB_NPCHumanShovel.Play(Game.GetPlayer())
    Utility.Wait(1.0) 
-   Placeable_NPCHumanShovel.Play(Game.GetPlayer())
+   SSB_NPCHumanShovel.Play(Game.GetPlayer())
    Utility.Wait(1.0)  
-   Placeable_NPCHumanShovel.Play(Game.GetPlayer())
+   SSB_NPCHumanShovel.Play(Game.GetPlayer())
    Utility.Wait(1.0)
-   Placeable_NPCHumanShovelDump.Play(Game.GetPlayer())
+   SSB_NPCHumanShovelDump.Play(Game.GetPlayer())
    Game.FadeOutGame(False, True, 5.0, 3.0)
    DisableNoWait(True)
    Disable(True)
-   Placeable_A_DeleteAll.AddForm(PlaceatMe(Plant01)) 
+   SSB_A_DeleteAll.AddForm(PlaceatMe(Plant01)) 
    DeleteWhenAble()
    Delete()
   

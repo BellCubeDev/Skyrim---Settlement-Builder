@@ -1,4 +1,4 @@
-Scriptname Placeable_Container_Respawn extends ObjectReference  
+Scriptname SSB_Container_Respawn extends ObjectReference  
 
 Int Property iResetHours = 48 Auto
 

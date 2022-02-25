@@ -1,4 +1,4 @@
-Scriptname Placeable__API Extends Quest
+Scriptname SSB__API Extends Quest
 {Script attached to the Placeable API Quest. Privodes API functions for general Settlement Building use.}
 
 Actor Property PlayerREf  Auto
@@ -36,14 +36,6 @@ Message Property SSB_MenuUi_Z_Rotate_SKSE  Auto
 
 Message Property SSB_MenuUi_Switch_Save  Auto
 
-
-;/
-MiscObject property MiscObj  Auto
-
-Static Property StaticDummy  Auto
-Activator Property My_Activator_Static  Auto
-/;
-
 ; Spells (for some reason)
 Spell Property SSB_SKSE_Positioner_Toggle  Auto
 Spell Property SSB_Auto_Level_Object_Global_Toggle_Spell  Auto
@@ -62,11 +54,12 @@ Spell Property SSB_Auto_Level_Object_Global_Toggle_Spell  Auto
 
 Bool Property UseSKSE Hidden ; ReadOnly
     Bool Function Get()
-        ;                                                         Thanks Pickysaurus!
-        return Placeable_Positioner_SKSE_Global.GetValue() == 0.0 && SKSE.GetVersionRelease() && (SKSE.GetVersionRelease() == SKSE.GetScriptVersionRelease())
-        ;      Does the user want it?                             Is working in the engine?      Does the version stored in the script match the version in the engine?
+        ;                                                     | For the rest of this line, thanks Pickysaurus!
+        return SSB_Positioner_SKSE_Global.GetValue() == 0.0 && SKSE.GetVersionRelease() && (SKSE.GetVersionRelease() == SKSE.GetScriptVersionRelease())
+        ;      Does the user want SKSE stuff?                 Is working in the engine?      Does the version stored in the script match the version in the engine?
     EndFunction
 EndProperty
+{Is SKSE useable and wanted?}
 
 ; Same tech used to check if we should do auto-leveling.
 ; However here, we have a Set() here too. Makes it easy for us.
@@ -74,14 +67,14 @@ EndProperty
 Bool Property DoAutoLevel Hidden ; ReadOnly
     Bool Function Get()
         ; Casting an Int or a Float to a Bool checks if the value is non-zero. In this use case, any non-zero value will disable Auto-leveling.
-        return !Placeable_AutoLevel_Disabled.GetValue()
+        return !SSB_AutoLevel_Disabled.GetValue()
     EndFunction
     Function Set(Bool abNewValue)
         ; Sets the Global to 0.0 if we're not disabling, and 1.0 if we are.
         SSB_AutoLevel_Disabled.SetValue((!abNewValue) as Float)
     EndFunction
 EndProperty
-
+{Should we level items automatically?}
 
 
 
@@ -105,20 +98,20 @@ GlobalVariable Property SSB_CurrentSave  Auto
 ; MORE fancy Property tech?! (I need to start using this in my own scripts)
 Int Property CurrentSaveNum Hidden
     Int Function Get()
-        return Placeable_CurrentSave.GetValue() as Int
+        return SSB_CurrentSave.GetValue() as Int
     EndFunction
 
     Function Set(Int aiNewValue)
         ; Checks if there would indeed be a save list with the new value before setting it
-        If Placeable_SaveLists_All[aiNewValue]
-            Placeable_CurrentSave.SetValue(aiNewValue as Float)
+        If SSB_SaveLists_All[aiNewValue]
+            SSB_CurrentSave.SetValue(aiNewValue as Float)
         EndIf
     EndFunction
 EndProperty
 
 FormList Property currentSaveList Hidden ; ReadOnly
     FormList Function Get()
-        return Placeable_SaveLists_All[CurrentSaveNum]
+        return SSB_SaveLists_All[CurrentSaveNum]
     EndFunction
 EndProperty
 
@@ -168,44 +161,44 @@ FormList Property SSB_TrackingList_Lights  Auto
 ;
 Function AddObjectToLists(ObjectReference akObject, Bool abIsPermanent, Bool abAutoDetect = true, int aiType = 0)
 
-    Placeable_TrackingList_All.AddForm(akObject)
-    Placeable_SaveLists_All[Placeable_CurrentSave.GetValueInt()].AddForm(akObject)
+    SSB_TrackingList_All.AddForm(akObject)
+    SSB_SaveLists_All[SSB_CurrentSave.GetValueInt()].AddForm(akObject)
 
     If akObject.IsEnabled()
-        Placeable_TrackingList_Enabled.AddForm(akObject)
-        Placeable_SaveLists_Enabled[Placeable_CurrentSave.GetValueInt()].AddForm(akObject)
+        SSB_TrackingList_Enabled.AddForm(akObject)
+        SSB_SaveLists_Enabled[SSB_CurrentSave.GetValueInt()].AddForm(akObject)
     Else
-        Placeable_TrackingList_Disabled.AddForm(akObject)
+        SSB_TrackingList_Disabled.AddForm(akObject)
     EndIf
 
 
     ; Tracking Lists
     If abIsPermanent
-        Placeable_TrackingList_Permanent.AddForm(akObject)
+        SSB_TrackingList_Permanent.AddForm(akObject)
     Else
-        Placeable_TrackingList_Temporary.AddForm(akObject)
+        SSB_TrackingList_Temporary.AddForm(akObject)
     EndIf
 
 
     If abAutoDetect
         Form akBase = akObject.GetBaseObject()
         If akBase as Static
-            Placeable_TrackingList_Statics.AddForm(akObject)
+            SSB_TrackingList_Statics.AddForm(akObject)
         ElseIf akBase as Activator
-            Placeable_TrackingList_Activators.AddForm(akObject)
+            SSB_TrackingList_Activators.AddForm(akObject)
         ElseIf akBase as Light
-            Placeable_TrackingList_Lights.AddForm(akObject)
+            SSB_TrackingList_Lights.AddForm(akObject)
         EndIf
 
         return ; Stops the script from entering THE RESTRICTED SECTION.
     EndIf
 
     If aiType == 1
-        Placeable_TrackingList_Statics.AddForm(akObject)
+        SSB_TrackingList_Statics.AddForm(akObject)
     ElseIf aiType == 2
-        Placeable_TrackingList_Activators.AddForm(akObject)
+        SSB_TrackingList_Activators.AddForm(akObject)
     ElseIf aiType == 3
-        Placeable_TrackingList_Lights.AddForm(akObject)
+        SSB_TrackingList_Lights.AddForm(akObject)
     EndIf
 
 EndFunction
@@ -216,7 +209,7 @@ Function SwitchSaveMenu()
     FormList oldSave = currentSaveList
     CurrentSaveNum = Switch_Save.Show()
 
-    Placeable_CurrentSave.GetSize()
+    SSB_CurrentSave.GetSize()
 EndFunction
 
 
@@ -282,7 +275,7 @@ EndFunction
 
 
 Function AutoLevel(ObjectReference akObject, Bool doCheck = false) ; Conveiently includes an If as a conveinience function.
-    If doCheck && Placeable_AutoLevel_Disabled.GetValue() == 1
+    If doCheck && SSB_AutoLevel_Disabled.GetValue() == 1
         debug.Trace("[LVX-SSS] Object Auto-Leveling OFF")
         return
     EndIf
@@ -295,18 +288,36 @@ EndFunction
 
 Function EnterTheMenus(ObjectReference akObject, Bool abUseActivatorMenus)
     if UseSKSE
-        EnterSKSEMenus
+        EnterSKSEMenus(akObject, abUseActivatorMenus)
     else
-        EnterNormalMenus
+        EnterNormalMenus(akObject, abUseActivatorMenus)
     EndIf
 EndFunction
 
 Function EnterSKSEMenus(ObjectReference akObject, Bool abUseActivatorMenus)
+    If abUseActivatorMenus
+        Menu_Activator(akObject)
+    Else
+        Menu(akObject)
+    EndIf
 EndFunction
 
-Function EnterNormalMenus(ObjectReference akObject, Bool abUseActivatorMenus)
+Function EnterSKSEMenus(ObjectReference akObject, Bool abUseActivatorMenus)
+    If abUseActivatorMenus
+        Menu_Activator_SKSE(akObject)
+    Else
+        Menu_SKSE(akObject)
+    EndIf
 EndFunction
 
+Function Universal_PuckUp(ObjectReference akObject)
+    akObject.Disable(True)
+    PlaceablePropertiesScriot MiscObj = (akObject as SSB_ItemPropertiesScriot).MiscObj
+    If MiscObj
+        PlayerREF.AddItem(MiscObj)
+    EndIf
+    akObject.Delete()
+EndFunction
 
 
 
@@ -323,7 +334,8 @@ EndFunction
 ; BELL: There's no need to define aiButton as a Function parameter.
 ;       Instead, I defined it as a variable.
 Function Menu(ObjectReference akObject)
-    ;Debug.Notification("Legacy Positioner UI Active")    Debug.Trace("[LVX-SSS] Legacy Positioner UI Active")
+    ;Debug.Notification("Legacy Positioner UI Active")
+    Debug.Trace("[LVX-SSS] Legacy Positioner UI Active")
 
     Int aiButton = MenuUi.show()
 
@@ -336,7 +348,8 @@ Function Menu(ObjectReference akObject)
 
     ElseIf aiButton == 4
         Rotate_Menu(akObject)
-        ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")        Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
+        ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")
+        Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
         Utility.wait(0.1)
 
     ElseIf aiButton == 5
@@ -344,9 +357,7 @@ Function Menu(ObjectReference akObject)
         Debug.MessageBox("Level Button")
 
     ElseIf aiButton == 6
-        Self.Disable(True)
-        PlayerREF.addItem(MiscObj)
-        Delete()
+        Universal_PuckUp
 
     ElseIf aiButton == 7   ; Options
         MenuUi_Options(akObject)
@@ -384,7 +395,7 @@ Message Property SSB_Notification_AlreadyLevel  Auto
 Function Auto_Level_Button(ObjectReference akObject)
     If akObject.GetAngleX() == 0 && akObject.GetAngleY() == 0
 
-    Self.SetAngle(0.0, 0.0, Self.GetAngleZ())
+    akObject.SetAngle(0.0, 0.0, Self.GetAngleZ())
 EndFunction
 
 
@@ -445,36 +456,36 @@ EndFunction
     \__|            \__|     \__| \_______|\__|  \__| \______/;
 
 
-Function Y_Menu()
+Function Y_Menu(ObjectReference akObject)
     Int aiButton
 
     While aiButton ; BELL: Using an Int as a condition checks If it isn't 0
         aiButton =  Y_Ui.show()
 
         If aiButton == 0 ; Exit Button
-            Menu()
+            Menu(akObject)
             return
         EndIf
 
-        Self.DisableNoWait()
+        akObject.DisableNoWait()
         If aiButton == 1
-            SetPosition(X, Y - 50, Z)
+            akObject.SetPosition(X, Y - 50, Z)
         ElseIf aiButton == 2
-            SetPosition(X, Y - 30, Z)
+            akObject.SetPosition(X, Y - 30, Z)
         ElseIf aiButton == 3
-            SetPosition(X, Y - 10, Z)
+            akObject.SetPosition(X, Y - 10, Z)
         ElseIf aiButton == 4
-            SetPosition(X, Y - 1, Z)
+            akObject.SetPosition(X, Y - 1, Z)
         ElseIf aiButton == 5
-            SetPosition(X, Y + 1, Z)
+            akObject.SetPosition(X, Y + 1, Z)
         ElseIf aiButton == 6
-            SetPosition(X, Y + 10, Z)
+            akObject.SetPosition(X, Y + 10, Z)
         ElseIf aiButton == 7
-            SetPosition(X, Y + 30, Z)
+            akObject.SetPosition(X, Y + 30, Z)
         ElseIf aiButton == 8
-            SetPosition(X, Y + 50, Z)
+            akObject.SetPosition(X, Y + 50, Z)
         EndIf
-        Self.EnableNoWait()
+        akObject.EnableNoWait()
 
     EndWhile
 EndFunction
@@ -500,66 +511,86 @@ Function X_Menu()
             return
         EndIf
 
-        If aiButton == 1
-            SetPosition(X - 50, Y, Z)
-        ElseIf aiButton == 2
-            SetPosition(X - 30, Y, Z)
-        ElseIf aiButton == 3
-            SetPosition(X - 10, Y, Z)
-        ElseIf aiButton == 4
-            SetPosition(X - 1, Y, Z)
-        ElseIf aiButton == 5
-            SetPosition(X + 1, Y, Z)
-        ElseIf aiButton == 6
-            SetPosition(X + 10, Y, Z)
-        ElseIf aiButton == 7
-            SetPosition(X + 30, Y, Z)
-        ElseIf aiButton == 8
-            SetPosition(X + 50, Y, Z)
-        EndIf
-        Self.EnableNoWait()
+        Int afChange
 
+        If aiButton == 1
+            afChange = -50
+        If aiButton == 2
+            afChange = -30
+        ElseIf aiButton == 3
+            afChange = -10
+        ElseIf aiButton == 4
+            afChange = -1
+        ElseIf aiButton == 5
+            afChange = 1
+        ElseIf aiButton == 6
+            afChange = 10
+        ElseIf aiButton == 7
+            afChange = 30
+        ElseIf aiButton == 8
+            afChange = 50
+
+        EndIf
+
+        akObject.SplineTranslateTo(akObject.X + afChange, akObject.Y, akObject.Z, akObject.GetAngleX(), akObject.GetAngleY(), akObject.GetAngleZ(), 30, 2000)
+        EndIf
     EndWhile
 EndFunction
 
-;/$$$$$$\              $$\                 $$\                     $$\      $$\
- $$  __$$\             $$ |                $$ |                    $$$\    $$$ |
- $$ |  $$ | $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$\    $$$$$$\        $$$$\  $$$$ | $$$$$$\  $$$$$$$\  $$\   $$\
- $$$$$$$  |$$  __$$\ \_$$  _|   \____$$\ \_$$  _|  $$  __$$\       $$\$$\$$ $$ |$$  __$$\ $$  __$$\ $$ |  $$ |
- $$  __$$< $$ /  $$ |  $$ |     $$$$$$$ |  $$ |    $$$$$$$$ |      $$ \$$$  $$ |$$$$$$$$ |$$ |  $$ |$$ |  $$ |
- $$ |  $$ |$$ |  $$ |  $$ |$$\ $$  __$$ |  $$ |$$\ $$   ____|      $$ |\$  /$$ |$$   ____|$$ |  $$ |$$ |  $$ |
- $$ |  $$ |\$$$$$$  |  \$$$$  |\$$$$$$$ |  \$$$$  |\$$$$$$$\       $$ | \_/ $$ |\$$$$$$$\ $$ |  $$ |\$$$$$$  |
- \__|  \__| \______/    \____/  \_______|   \____/  \_______|      \__|     \__| \_______|\__|  \__| \______/;
+;/$$$$$$\              $$\                 $$\                     $$\   $$\ 
+ $$  __$$\             $$ |                $$ |                    $$ |  $$ |
+ $$ |  $$ | $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$\    $$$$$$\        \$$\ $$  |
+ $$$$$$$  |$$  __$$\ \_$$  _|   \____$$\ \_$$  _|  $$  __$$\        \$$$$  / 
+ $$  __$$< $$ /  $$ |  $$ |     $$$$$$$ |  $$ |    $$$$$$$$ |       $$  $$<  
+ $$ |  $$ |$$ |  $$ |  $$ |$$\ $$  __$$ |  $$ |$$\ $$   ____|      $$  /\$$\ 
+ $$ |  $$ |\$$$$$$  |  \$$$$  |\$$$$$$$ |  \$$$$  |\$$$$$$$\       $$ /  $$ |
+ \__|  \__| \______/    \____/  \_______|   \____/  \_______|      \_/   \_/;
 
 
-Function Rotate_Menu()
-    While abMenu
-        Int aiButton =  Rotate_Ui.show()
+;/$$$$$$\              $$\                 $$\                     $$$$$$$$\ 
+ $$  __$$\             $$ |                $$ |                    \____$$  |
+ $$ |  $$ | $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$\    $$$$$$\            $$  / 
+ $$$$$$$  |$$  __$$\ \_$$  _|   \____$$\ \_$$  _|  $$  __$$\          $$  /  
+ $$  __$$< $$ /  $$ |  $$ |     $$$$$$$ |  $$ |    $$$$$$$$ |        $$  /   
+ $$ |  $$ |$$ |  $$ |  $$ |$$\ $$  __$$ |  $$ |$$\ $$   ____|       $$  /    
+ $$ |  $$ |\$$$$$$  |  \$$$$  |\$$$$$$$ |  \$$$$  |\$$$$$$$\       $$$$$$$$\ 
+ \__|  \__| \______/    \____/  \_______|   \____/  \_______|      \_______/;
+
+
+Function Rotate_Z_Menu()
+    Int aiButton
+
+    While aiButton ; BELL: Using an Int as a condition checks If it isn't 0
+        aiButton = Rotate_Z_Ui.show()
+
         If aiButton == 0 ; Exit Button
             Menu()
             return
         EndIf
 
-        Self.DisableNoWait()
+        Int afChange
+
         If aiButton == 1
-            Self.SetAngle(0.0, 0.0, self.GetAngleZ() - 50.0)
-        ElseIf aiButton == 2
-            Self.SetAngle(0.0, 0.0, self.GetAngleZ() - 30.0)
+            afChange = -50
+        If aiButton == 2
+            afChange = -30
         ElseIf aiButton == 3
-            Self.SetAngle(0.0, 0.0, self.GetAngleZ() - 10.0)
+            afChange = -10
         ElseIf aiButton == 4
-            Self.SetAngle(0.0, 0.0, self.GetAngleZ() - 1.0)
+            afChange = -1
         ElseIf aiButton == 5
-            Self.SetAngle(0.0, 0.0, self.GetAngleZ() + 1.0)
+            afChange = 1
         ElseIf aiButton == 6
-            Self.SetAngle(0.0, 0.0, self.GetAngleZ() + 10.0)
+            afChange = 10
         ElseIf aiButton == 7
-            Self.SetAngle(0.0, 0.0, self.GetAngleZ() + 30.0)
+            afChange = 30
         ElseIf aiButton == 8
-            Self.SetAngle(0.0, 0.0, self.GetAngleZ() + 50.0)
+            afChange = 50
+
         EndIf
 
-        Self.EnableNoWait()
+        akObject.SplineTranslateTo(akObject.X, akObject.Y, akObject.Z, akObject.GetAngleX(), akObject.GetAngleY(), akObject.GetAngleZ() + afChange, 30, 2000)
+        EndIf
     EndWhile
 EndFunction
 
@@ -608,10 +639,10 @@ Function MenuUi_Options_PositionerMenu() ; Show Option Menu
         MenuUi_Options()
 
     ElseIf aiButton== 1
-        Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+        SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 
     ElseIf aiButton == 2
-        Placeable_Auto_Level_Object_Global_Toggle_Spell.Cast(PlayerRef)
+        SSB_Auto_Level_Object_Global_Toggle_Spell.Cast(PlayerRef)
 
     ; BELL: No use wasing the processing power to evaluate that ElseIF. If it does nothing, you can make it a comment instead.
     ; ElseIf aiButton == 3, do nothing
@@ -646,10 +677,10 @@ Function MenuUi_MakeStatic()
     ; Start fading to give the illusion
     Self.DisableNoWait(True)
 
-    Placeable_A_DeleteAll.AddForm(PlaceAtMe(StaticDummy)) ; Creates a StaticDummy and adds that to the Delete All list.
+    SSB_A_DeleteAll.AddForm(PlaceAtMe(StaticDummy)) ; Creates a StaticDummy and adds that to the Delete All list.
     ;/ Human-readable:
         ObjectReference newStatic = PlaceAtMe(StaticDummy)
-        Placeable_A_DeleteAll.AddForm(newStatic)
+        SSB_A_DeleteAll.AddForm(newStatic)
     /;
 
     ;BELL: Fading takes a While, so we should wait for it to finish before deleting outselves
@@ -672,11 +703,12 @@ $$\   $$ |$$ |\$$\  $$\   $$ |$$ |            $$ |\$  /$$ |$$  __$$ |$$ |$$ |  $
 
 
 
-Function MenuUi_SKSE()
+Function Menu_SKSE()
    Int aiButton =  MenuUi_SKSE.show()
 
 
-    ;Debug.Notification("SKSE Positioner Active")    Debug.Trace("[LVX-SSS] SKSE Positioner Active")
+    ;Debug.Notification("SKSE Positioner Active")
+    Debug.Trace("[LVX-SSS] SKSE Positioner Active")
 
     ;/    Move  Z   /; If aiButton == 1
         Z_Menu_SKSE()
@@ -687,7 +719,8 @@ Function MenuUi_SKSE()
 
     ;/    Rotate    /; ElseIf aiButton == 4
         Rotate_Menu_SKSE()
-        ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")        Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
+        ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")
+        Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
         ;BELL: What purpose does the "Utility.wait(0.1)" that was here serve?
 
     ;/  Auto-Level  /; ElseIf aiButton == 5
@@ -710,6 +743,59 @@ Function MenuUi_SKSE()
 
     EndIf
 EndFunction
+
+;/
+                    _     _                   _                                 _   _       
+     /\            | |   (_)                 | |                        /\     | | | |      
+    /  \      ___  | |_   _  __   __   __ _  | |_    ___    _ __       /  \    | | | |_     
+   / /\ \    / __| | __| | | \ \ / /  / _` | | __|  / _ \  | '__|     / /\ \   | | | __|    
+  / ____ \  | (__  | |_  | |  \ V /  | (_| | | |_  | (_) | | |       / ____ \  | | | |_   _ 
+ /_/    \_\  \___|  \__| |_|   \_/    \__,_|  \__|  \___/  |_|      /_/    \_\ |_|  \__| (_)
+
+/;
+
+Function Menu_Activator_SKSE()
+   Int aiButton =  MenuUi_SKSE.show()
+
+
+    ;Debug.Notification("SKSE Positioner Active")
+    Debug.Trace("[LVX-SSS] SKSE Positioner Active")
+
+    ;/    Move  Z   /; If aiButton == 2
+        Z_Menu_SKSE()
+    ;/    Move  Y   /; ElseIf aiButton == 3
+        Y_Menu_SKSE()
+    ;/    Move  X   /; ElseIf aiButton == 4
+        X_Menu_SKSE()
+
+    ;/    Rotate    /; ElseIf aiButton == 5
+        Rotate_Menu_SKSE()
+        ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")
+        Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
+        ;BELL: What purpose does the "Utility.wait(0.1)" that was here serve?
+
+    ;/  Auto-Level  /; ElseIf aiButton == 6
+        Auto_Level_Button()
+
+    ;/    Pick Up   /; ElseIf aiButton == 7
+       Self.DisableNoWait(True)
+       PlayerREF.AddItem(MiscObj)
+
+       ;BELL: I changed it to a "sandwhiched" disablement system,
+       ;      where the item starts fading and, While it is fading, the item is added to the Player. Just a player conveinience.
+       Self.Disable(True)
+       Self.Delete()
+
+    ;/    Options   /; ElseIf aiButton == 8
+      MenuUi_Options_SKSE()
+
+    ;/  Make Static /; ElseIf aiButton == 9
+        MenuUi_MakeStatic()
+
+    EndIf
+EndFunction
+
+
 
 ;/$$$$$$$\        $$\      $$\                                      $$$$$$\  $$\   $$\  $$$$$$\  $$$$$$$$\
  \____$$  |       $$$\    $$$ |                                    $$  __$$\ $$ | $$  |$$  __$$\ $$  _____|
@@ -964,7 +1050,7 @@ Function MenuUi_Options_SKSE()
             MenuUi_Options_PositionerMenu()
 
         ;/  Toggle Auto-Level  /;ElseIf aiButton == 2
-            Placeable_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
+            SSB_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
 
         ;/      Delete All     /; ElseIf aiButton == 3
 
@@ -972,7 +1058,8 @@ Function MenuUi_Options_SKSE()
             ;      It's easier for translators and prevents you from having to edit the script should you ever want to change it.
 
             ; Use_Lesser_Power_Msg.Show()
-            Debug.Notification("Use the Skyrim Settelement Builder Options: Lesser Power To Delete All")            Debug.Trace("[LVX-SSS] Use the Skyrim Settelement Builder Options: Lesser Power To Delete All")
+            Debug.Notification("Use the Skyrim Settelement Builder Options: Lesser Power To Delete All")
+            Debug.Trace("[LVX-SSS] Use the Skyrim Settelement Builder Options: Lesser Power To Delete All")
 
         EndIf
 EndFunction
@@ -983,7 +1070,7 @@ Function MenuUi_Options_PositionerMenu_SKSE() ; Show Option Menu
 
     ;BELL: You can use the commented-out code when you add more options. Or, you can expand this. Either way works.
     If aibutton == 1
-        Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+        SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
     Else
         MenuUi_Options_SKSE()
     EndIf
@@ -994,7 +1081,7 @@ Function MenuUi_Options_PositionerMenu_SKSE() ; Show Option Menu
         MenuUi_Options_SKSE()
 
     ElseIf aiButton == 1
-        Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+        SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
     EndIf
     /;
 EndFunction

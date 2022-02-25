@@ -1,4 +1,4 @@
-            Scriptname Placeable_CreativeMode_Catalogue extends activemagiceffect  
+            Scriptname SSB_CreativeMode_Catalogue extends activemagiceffect  
 
 Message Property SSB_ManualMenu_CreativeMode_Catalogue  Auto
 ObjectReference Property CraftingStation01_Catagory  Auto
@@ -26,7 +26,7 @@ EndEvent
 
 
 Function Menu(Int aiButton = 0)
-     aiButton = Placeable_ManualMenu_CreativeMode_Catalogue.show()
+     aiButton = SSB_ManualMenu_CreativeMode_Catalogue.show()
 
     If aiButton == 1
     CraftingStation01_Catagory.Activate(Game.GetPlayer())   ;Containers

@@ -1,4 +1,4 @@
-Scriptname Placeable_Container_StaticDummy extends ObjectReference  
+Scriptname SSB_Container_StaticDummy extends ObjectReference  
 
 
 Event Oninit(ObjectReference akActionRef)

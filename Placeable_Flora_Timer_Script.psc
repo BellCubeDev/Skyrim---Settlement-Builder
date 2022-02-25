@@ -1,4 +1,4 @@
-Scriptname Placeable_Flora_Timer_Script extends ObjectReference  
+Scriptname SSB_Flora_Timer_Script extends ObjectReference  
 
 import game
 import debug

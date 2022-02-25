@@ -1,4 +1,4 @@
-Scriptname Placeable_Message_OnStart extends ReferenceAlias  
+Scriptname SSB_Message_OnStart extends ReferenceAlias  
 
 
 Bool Property doOnce = True Auto

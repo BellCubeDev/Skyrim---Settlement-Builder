@@ -1,4 +1,4 @@
-Scriptname Placeable_Debug_Messagebox extends ObjectReference  
+Scriptname SSB_Debug_Messagebox extends ObjectReference  
 String Property MyMessage  Auto
 {Shows the Quick Messagebox On Load}
 Message Property SSB_AAA_UndertandCupsMenuUI  Auto
@@ -16,7 +16,7 @@ Utility.Wait(0.5)
 Debug.Messagebox(MyMessage) ; Fast string message
  Else 
 
-If (Placeable_Global_IUnderstand01.GetValue() == 0.0)
+If (SSB_Global_IUnderstand01.GetValue() == 0.0)
  Menu()
  
  EndIf
@@ -25,7 +25,7 @@ EndEvent
 
 
 Function Menu(Int aiButton = 0)
-     aiButton = Placeable_AAA_UndertandCupsMenuUI.show() ; Actual agreement Menu
+     aiButton = SSB_AAA_UndertandCupsMenuUI.show() ; Actual agreement Menu
 
     If aiButton == 0
     ;Ok
@@ -33,7 +33,7 @@ Function Menu(Int aiButton = 0)
     ElseIf aiButton == 1
     ;I understand
 
-    Placeable_Global_IUnderstand01.SetValue(1.0)
+    SSB_Global_IUnderstand01.SetValue(1.0)
 
     EndIf
 EndFunction

@@ -1,4 +1,4 @@
-Scriptname Placeable_Flora_Timer_Script02 extends ObjectReference  
+Scriptname SSB_Flora_Timer_Script02 extends ObjectReference  
 
 
 

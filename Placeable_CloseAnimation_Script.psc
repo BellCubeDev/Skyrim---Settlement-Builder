@@ -1,4 +1,4 @@
-Scriptname Placeable_CloseAnimation_Script extends ObjectReference  
+Scriptname SSB_CloseAnimation_Script extends ObjectReference  
 
 
 

@@ -1,4 +1,4 @@
-Scriptname Placeable_Gate_Adjustment_Script extends ObjectReference  
+Scriptname SSB_Gate_Adjustment_Script extends ObjectReference  
 
 
 Message Property MenuUi_Door_MainMenu  Auto
@@ -41,7 +41,7 @@ endEvent
 
 Event OnActivate(ObjectReference akActionRef)
    If akActionRef == Game.GetPlayer()&& SKSE.GetVersion() > 0                                   ;is SKSE present
-    If (Placeable_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
+    If (SSB_Positioner_SKSE_Global.GetValue() == 0.0)    ;is SKSE menu choice selected
       MenuUi_SKSE()                                              ;use SKSE menu
     Else                                                       ;otherwise 
       Menu()                                                     ;use regular menu
@@ -272,7 +272,7 @@ aiButton= MenuUi_Options_PositionerMenu.Show()
   
 
    ElseIf aiButton==1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 
 EndIf
 EndIf
@@ -595,7 +595,7 @@ aiButton= MenuUi_Options_PositionerMenu_SKSE.Show()
    
 
    ElseIf aiButton==1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 EndIf
 EndIf
 EndFunction

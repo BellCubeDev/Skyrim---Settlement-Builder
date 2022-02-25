@@ -1,4 +1,4 @@
-Scriptname Placeable_ApocTowerTop extends ObjectReference  
+Scriptname SSB_ApocTowerTop extends ObjectReference  
 
 
 

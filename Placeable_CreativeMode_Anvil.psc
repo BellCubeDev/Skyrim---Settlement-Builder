@@ -1,4 +1,4 @@
-Scriptname Placeable_CreativeMode_Anvil extends ObjectReference  
+Scriptname SSB_CreativeMode_Anvil extends ObjectReference  
 
 
 GlobalVariable Property CreativeMode  Auto

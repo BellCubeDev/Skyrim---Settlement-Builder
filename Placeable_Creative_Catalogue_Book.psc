@@ -1,4 +1,4 @@
-Scriptname Placeable_Creative_Catalogue_Book extends ObjectReference  
+Scriptname SSB_Creative_Catalogue_Book extends ObjectReference  
 
 
 Spell Property SSB_CreativeMode_Catalouge_Spell  Auto
@@ -22,7 +22,7 @@ EndEvent
 
 
 Function Cast()
-Placeable_CreativeMode_Catalouge_Spell.Cast(PlayerRef)
+SSB_CreativeMode_Catalouge_Spell.Cast(PlayerRef)
 EndFunction
 
 

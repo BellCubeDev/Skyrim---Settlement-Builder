@@ -1,4 +1,4 @@
-Scriptname Placeable_MISC_Adjust_Deploy extends ObjectReference  
+Scriptname SSB_MISC_Adjust_Deploy extends ObjectReference  
 
 ;====================================================================================
 

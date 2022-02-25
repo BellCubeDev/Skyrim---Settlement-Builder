@@ -1,4 +1,4 @@
-Scriptname Placeable_BeeApiary_Script extends ObjectReference  
+Scriptname SSB_BeeApiary_Script extends ObjectReference  
 
 Int Property iResetHours = 72 Auto
 

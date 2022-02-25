@@ -1,4 +1,4 @@
-Scriptname Placeable_Banner01_Script extends ObjectReference  
+Scriptname SSB_Banner01_Script extends ObjectReference  
 
 
 

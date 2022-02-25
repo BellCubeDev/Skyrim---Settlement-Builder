@@ -1,4 +1,4 @@
-Scriptname Placeable_Activate_ObjectReference extends ObjectReference  
+Scriptname SSB_Activate_ObjectReference extends ObjectReference  
 
 
 ObjectReference Property Activate_Object01  Auto

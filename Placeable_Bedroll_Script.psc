@@ -1,4 +1,4 @@
-Scriptname Placeable_Bedroll_Script extends ObjectReference  
+Scriptname SSB_Bedroll_Script extends ObjectReference  
 
 
 Message Property Bedroll_Ui  Auto

@@ -1,4 +1,4 @@
-Scriptname Placeable_Tarot_Script extends ActiveMagicEffect  
+Scriptname SSB_Tarot_Script extends ActiveMagicEffect  
 
 
 

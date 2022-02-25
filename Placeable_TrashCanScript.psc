@@ -1,4 +1,4 @@
-Scriptname Placeable_TrashCanScript extends ObjectReference  
+Scriptname SSB_TrashCanScript extends ObjectReference  
 
 ObjectReference Property Linked_Chest  Auto
 Message Property  Trash_MenuUi  Auto

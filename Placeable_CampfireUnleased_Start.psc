@@ -1,4 +1,4 @@
-Scriptname Placeable_CampfireUnleased_Start extends activemagiceffect  
+Scriptname SSB_CampfireUnleased_Start extends activemagiceffect  
 
 Message Property SSB_AAA_CampfireUnleashed_Start_Message  Auto 
 Message Property SSB_AAA_ManualMenu_Welcome  Auto
@@ -68,19 +68,19 @@ EndEvent
 
 
 Function Menu01(Int aiButton = 0)
-     aiButton = Placeable_AAA_CampfireUnleashed_Start_Message.show()
+     aiButton = SSB_AAA_CampfireUnleashed_Start_Message.show()
 
     If aiButton == 0
       Utility.Wait(1)
     Menu()
-    Game.GetPlayer().AddSpell(Placeable_RecipesOff_Spell, False )
-    Game.GetPlayer().AddSpell(Placeable_Options_Spell, False) 
-    ;Game.GetPlayer().AddSpell(Placeable_PowerConfig_Spell_02, False) 
-    Game.GetPlayer().AddItem(placeable___Campfire_Unleashed_Manual)
-    Game.GetPlayer().AddSpell(Placeable_RecipesOff_Spell, False)
+    Game.GetPlayer().AddSpell(SSB_RecipesOff_Spell, False )
+    Game.GetPlayer().AddSpell(SSB_Options_Spell, False) 
+    ;Game.GetPlayer().AddSpell(SSB_PowerConfig_Spell_02, False) 
+    Game.GetPlayer().AddItem(SSB___Campfire_Unleashed_Manual)
+    Game.GetPlayer().AddSpell(SSB_RecipesOff_Spell, False)
     ;debug.notification("Campfire Unleashed: Base Powers Added")
     Debug.Trace("[LVX-SSS] Campfire Unleashed: Base Powers Added")
-    Game.GetPlayer().RemoveSpell(Placeable_CampfireUnleashed_Start_Spell)
+    Game.GetPlayer().RemoveSpell(SSB_CampfireUnleashed_Start_Spell)
     Utility.Wait(0.2)
     debug.notification("Skyrim - Settlement Builder: Finished Loading")
     Debug.Trace("[LVX-SSS] Skyrim - Settlement Builder: Finished Loading")
@@ -96,7 +96,7 @@ EndFunction
 ;-------------------------------------------------
 
 Function Menu(Int aiButton = 0)
-     aiButton = Placeable_AAA_ManualMenu_Welcome.show()
+     aiButton = SSB_AAA_ManualMenu_Welcome.show()
 
 ;WELCOME MENU
     If aiButton ==0
@@ -522,7 +522,8 @@ Function ManualMenu_AddSpells_Creative_Special(Int aiButton = 0)
 
     ElseIf aiButton == 2
     Game.GetPlayer().AddSpell(CreativeStorageSpell)  
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
    ElseIf aiButton == 3
         
@@ -546,7 +547,8 @@ Function ManualMenu_AddSpells_Utilities(Int aiButton = 0)
 
     ElseIf aiButton == 2
    Game.GetPlayer().AddSpell(TCLSpell)   
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
   ElseIf aiButton == 3
   Game.GetPlayer().AddSpell(ToggleGrassSpell)
@@ -570,7 +572,8 @@ Function ManualMenu_RemoveSpells_Utilities(Int aiButton = 0)
 
     ElseIf aiButton == 2
     Game.GetPlayer().RemoveSpell(TCLSpell)   
-    ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+    ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
    ElseIf aiButton == 3
     Game.GetPlayer().RemoveSpell(ToggleGrassSpell)

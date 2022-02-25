@@ -1,4 +1,4 @@
-Scriptname Placeable_UseAdjustment_Script extends ObjectReference  
+Scriptname SSB_UseAdjustment_Script extends ObjectReference  
 
 Message Property Menu_ActionUse  Auto
 Message Property MenuUi_PositionSelect  Auto

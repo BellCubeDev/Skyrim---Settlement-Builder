@@ -1,4 +1,4 @@
-Scriptname Placeable_Collision_Off_Script extends activemagiceffect  
+Scriptname SSB_Collision_Off_Script extends activemagiceffect  
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
     Utility.SetINIBool("bDisablePlayerCollision:Havok", True)

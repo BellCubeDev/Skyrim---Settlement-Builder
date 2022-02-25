@@ -1,4 +1,4 @@
-Scriptname Placeable_Catalogue_Workbench extends ObjectReference  
+Scriptname SSB_Catalogue_Workbench extends ObjectReference  
 
 
 GlobalVariable Property CreativeMode  Auto
@@ -25,6 +25,6 @@ EndIf
 EndEvent
 
 Function Cast()
-Placeable_CreativeMode_Catalouge_Spell.Cast( PlayerRef)
+SSB_CreativeMode_Catalouge_Spell.Cast( PlayerRef)
 EndFunction
 

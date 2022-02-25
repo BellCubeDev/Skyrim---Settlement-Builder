@@ -1,4 +1,4 @@
-Scriptname Placeable_Firewood_Script extends ObjectReference  
+Scriptname SSB_Firewood_Script extends ObjectReference  
 
 
 Activator Property Firewood01  Auto 

@@ -1,4 +1,4 @@
-Scriptname Placeable_AnimatedObjects_Script extends ObjectReference  
+Scriptname SSB_AnimatedObjects_Script extends ObjectReference  
 
 Bool property bAllowInterrupt = False Auto
 {Allow interrupts While animation? Default: False}

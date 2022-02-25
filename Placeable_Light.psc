@@ -1,4 +1,4 @@
-Scriptname Placeable_Light extends ObjectReference  
+Scriptname SSB_Light extends ObjectReference  
 
 
 

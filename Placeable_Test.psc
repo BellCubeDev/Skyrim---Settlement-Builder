@@ -1,4 +1,4 @@
-ScriptName Placeable_Test Extends ObjectReference
+ScriptName SSB_Test Extends ObjectReference
 
 
 Message Property Main_Menu  Auto

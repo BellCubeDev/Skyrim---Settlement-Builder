@@ -1,4 +1,4 @@
-Scriptname Placeable_ActivateObject_AlbinoSpider extends ObjectReference  
+Scriptname SSB_ActivateObject_AlbinoSpider extends ObjectReference  
 
 
 ObjectReference Property Activate_Object01  Auto

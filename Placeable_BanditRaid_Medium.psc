@@ -1,10 +1,10 @@
-Scriptname Placeable_BanditRaid_Medium extends ObjectReference  
+Scriptname SSB_BanditRaid_Medium extends ObjectReference  
 
 
 import game
 import debug
 Message Property BattleStartMessage  Auto
-Message Property  Placeable_AA_RaidMenu  Auto
+Message Property  SSB_AA_RaidMenu  Auto
 Int Property iResetRound = 1 Auto
 MiscObject property MiscObj  Auto
 
@@ -146,7 +146,7 @@ Debug.Trace("[LVX-SSS] Enemy Reinforcements Have Arrived")
 EndEvent
 
 Function Menu(Int aiButton = 0)
-       aiButton = Placeable_AA_RaidMenu.show()   ;Shows Bandit Raid Menu to continue the Raid or startOver
+       aiButton = SSB_AA_RaidMenu.show()   ;Shows Bandit Raid Menu to continue the Raid or startOver
  If aiButton == 0 
 RegisterForSingleUpdateGameTime(iResetRound) ;Event  Init() is at the begging of the script
            Debug.Notification("Round Reset")

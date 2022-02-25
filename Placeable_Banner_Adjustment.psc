@@ -1,4 +1,4 @@
-Scriptname Placeable_Banner_Adjustment extends ObjectReference  
+Scriptname SSB_Banner_Adjustment extends ObjectReference  
  
 
 
@@ -33,31 +33,31 @@ Spell Property SSB_SKSE_Positioner_Toggle  Auto
 
 
 
-Formlist Placeable_A_DeleteAll 
+Formlist SSB_A_DeleteAll 
 
 ;----------------------------------------Auto - Object Leveling - System ----------------------------------------------------------------------------
-Spell Placeable_Auto_Level_Object_Global_Toggle_Spell
-GlobalVariable Placeable_Auto_Leveling_Items
+Spell SSB_Auto_Level_Object_Global_Toggle_Spell
+GlobalVariable SSB_Auto_Leveling_Items
 
 Event OnInit() ; This event will run once, when the script is initialized
  
                                                ;Caution
 ;===========================================Delete All Fomlist Property================================================
-Placeable_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;  | 
+SSB_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;  | 
 ;======================================================================================================================
 
 ;---------------------------Auto-Level-Toggle-Spell-------------------
-Placeable_Auto_Level_Object_Global_Toggle_Spell = Game.GetFormFromFile(0x00DE456D, "LvxMagicks-CampfireUnleashed.Esm") as Spell
+SSB_Auto_Level_Object_Global_Toggle_Spell = Game.GetFormFromFile(0x00DE456D, "LvxMagicks-CampfireUnleashed.Esm") as Spell
     
 
 
 
  ;-------------------------Auto-Level-Object--------------------------    
-    Placeable_Auto_Leveling_Items = Game.GetFormFromFile(0x00DD0161, "LvxMagicks-CampfireUnleashed.Esm") as GlobalVariable
-    ;debug.Notification(Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue())
-    Debug.Trace("[LVX-SSS] " + Placeable_Auto_Leveling_Items+": "+Placeable_Auto_Leveling_Items.GetValue()
+    SSB_Auto_Leveling_Items = Game.GetFormFromFile(0x00DD0161, "LvxMagicks-CampfireUnleashed.Esm") as GlobalVariable
+    ;debug.Notification(SSB_Auto_Leveling_Items+": "+SSB_Auto_Leveling_Items.GetValue())
+    Debug.Trace("[LVX-SSS] " + SSB_Auto_Leveling_Items+": "+SSB_Auto_Leveling_Items.GetValue()
    
-If (Placeable_Auto_Leveling_Items.GetValue() == 0)
+If (SSB_Auto_Leveling_Items.GetValue() == 0)
     GoToState("Auto_Level")
     
 
@@ -71,7 +71,7 @@ EndEvent
 
 State Auto_Level
 Event OnBeginState()
-    If (Placeable_Auto_Leveling_Items.GetValue() == 1)
+    If (SSB_Auto_Leveling_Items.GetValue() == 1)
     
     ;debug.Notification("Object Auto-Leveled OFF")
     
@@ -146,7 +146,7 @@ EndFunction
 
     Function Auto_Level_Button()
 
-    If (Placeable_Auto_Leveling_Items.GetValue() == 1)
+    If (SSB_Auto_Leveling_Items.GetValue() == 1)
     Self.SetAngle(0.0, 0.0, Self.GetAngleZ())
     
 
@@ -349,10 +349,10 @@ aiButton= MenuUi_Options_PositionerMenu.Show()
   MenuUi_Options()
 
    ElseIf aiButton== 1
-Placeable_SKSE_Positioner_Toggle.cast(PlayerRef)
+SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
 
    ElseIf aiButton == 2
-Placeable_Auto_Level_Object_Global_Toggle_Spell.Cast(PlayerRef)
+SSB_Auto_Level_Object_Global_Toggle_Spell.Cast(PlayerRef)
 
 EndIf
 EndIf
@@ -369,7 +369,7 @@ Function MenuUi_MakeStatic(Int aiButton = 0) ;Make Static
     If aiButton == 1
     DisableNoWait(True)
     Self.Disable(True)
-    Placeable_A_DeleteAll.AddForm(PlaceatMe(My_Banner))       
+    SSB_A_DeleteAll.AddForm(PlaceatMe(My_Banner))       
     Delete()
     EndIf
 

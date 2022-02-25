@@ -1,4 +1,4 @@
-Scriptname Placeable_ItemAdjustmentScript extends ObjectReference
+Scriptname SSB_ItemAdjustmentScript extends ObjectReference
 
 ;/ BellCube's Changes & Notes
 
@@ -23,21 +23,22 @@ Bool Property __IsActivateable  Auto
 
 
 ; Auto-Leveling System
-Spell Placeable_Auto_Level_Object_Global_Toggle_Spell
-GlobalVariable Placeable_AutoLevel_Disabled
+Spell SSB_Auto_Level_Object_Global_Toggle_Spell
+GlobalVariable SSB_AutoLevel_Disabled
 
 Event OnInit()
 
-    ;/ Auto-Level Toggle Spell /; Placeable_Auto_Level_Object_Global_Toggle_Spell = Game.GetFormFromFile(0x00DE456D, "LvxMagick - Skyrim - Settlement Builder.Esm") as Spell
+    ;/ Auto-Level Toggle Spell /; SSB_Auto_Level_Object_Global_Toggle_Spell = Game.GetFormFromFile(0x00DE456D, "LvxMagick - Skyrim - Settlement Builder.Esm") as Spell
 
-    ;/   Delete All  Fomlist   /; Placeable_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist
+    ;/   Delete All  Fomlist   /; SSB_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist
 
-    ;/   Auto-Level Objects?   /; Placeable_AutoLevel_Disabled = Game.GetFormFromFile(0x00DD0161, "LvxMagick - Skyrim - Settlement Builder.Esm") as GlobalVariable
-    ;debug.Notification(Placeable_AutoLevel_Disabled+": "+Placeable_AutoLevel_Disabled.GetValue())    Debug.Trace("[LVX-SSS] " + Placeable_AutoLevel_Disabled+": "+Placeable_AutoLevel_Disabled.GetValue()
+    ;/   Auto-Level Objects?   /; SSB_AutoLevel_Disabled = Game.GetFormFromFile(0x00DD0161, "LvxMagick - Skyrim - Settlement Builder.Esm") as GlobalVariable
+    ;debug.Notification(SSB_AutoLevel_Disabled+": "+SSB_AutoLevel_Disabled.GetValue())
+    Debug.Trace("[LVX-SSS] " + SSB_AutoLevel_Disabled+": "+SSB_AutoLevel_Disabled.GetValue()
 
     ;======================================================================================================================
 
-    Placeable__API.AutoLevel(self, !Placeable_AutoLevel_Disabled.GetValueInt())
+    SSB__API.AutoLevel(self, !SSB_AutoLevel_Disabled.GetValueInt())
 
     If __IsActivateable
         GoToState("")
@@ -48,7 +49,7 @@ EndEvent
 Event OnActivate(ObjectReference akActionRef)
 
     ; BELL: Using an AND compareop (comparison operator) gives you nice, simple-to-understand IFs.
-    If SKSE.GetVersion() > 0 && (Placeable_Positioner_SKSE_Global.GetValue() == 0.0)
+    If SKSE.GetVersion() > 0 && (SSB_Positioner_SKSE_Global.GetValue() == 0.0)
         MenuUi_SKSE() ;use SKSE menu
         return
     else

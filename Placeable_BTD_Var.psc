@@ -1,4 +1,4 @@
-Scriptname Placeable_BTD_Var extends Quest  
+Scriptname SSB_BTD_Var extends Quest  
 
 
 

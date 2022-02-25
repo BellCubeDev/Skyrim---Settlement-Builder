@@ -1,4 +1,4 @@
-Scriptname Placeable_CreationEX_Deploy extends ObjectReference 
+Scriptname SSB_CreationEX_Deploy extends ObjectReference 
 
 Activator Property ActivatorEX_Act  Auto
 

@@ -1,4 +1,4 @@
-Scriptname Placeable_HandContainer extends ObjectReference  
+Scriptname SSB_HandContainer extends ObjectReference  
 
 Message Property My_InventoryContainer_Message  Auto
 Spell Property Handheld_Container_Spell  Auto

@@ -1,4 +1,4 @@
-Scriptname Placeable_XBOX_Position_SKSE_SUb extends ObjectReference  
+Scriptname SSB_XBOX_Position_SKSE_SUb extends ObjectReference  
 
 
 

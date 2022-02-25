@@ -1,4 +1,4 @@
-Scriptname Placeable_Container_Flora_Hanging extends ObjectReference  
+Scriptname SSB_Container_Flora_Hanging extends ObjectReference  
 
 
 

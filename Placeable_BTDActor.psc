@@ -1,1 +1,1 @@
-Scriptname Placeable_BTDActor extends activemagiceffect  
+Scriptname SSB_BTDActor extends activemagiceffect  

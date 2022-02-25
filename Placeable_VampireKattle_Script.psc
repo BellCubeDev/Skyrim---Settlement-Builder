@@ -1,18 +1,18 @@
-Scriptname Placeable_VampireKattle_Script extends ObjectReference  
+Scriptname SSB_VampireKattle_Script extends ObjectReference  
 
  
 ActorBase Property Thral  Auto
-FormList Placeable_A_DeleteAll
+FormList SSB_A_DeleteAll
 
 Event OnInIt()
 ;============================================Delete All Fomlist========================================================
-    Placeable_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;|
+    SSB_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist;|
 ;======================================================================================================================
 EndEvent
 
 Event OnActivate(ObjectReference akActionRef)
 
-    Placeable_A_DeleteAll.AddForm(PlaceatMe(Thral))
+    SSB_A_DeleteAll.AddForm(PlaceatMe(Thral))
 
     Disable(True)
     

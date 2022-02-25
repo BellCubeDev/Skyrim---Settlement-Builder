@@ -1,4 +1,4 @@
-Scriptname Placeable_UseFurniture_Script extends ObjectReference
+Scriptname SSB_UseFurniture_Script extends ObjectReference
 
 ;/$$$$$\ $$\      $$\ $$$$$$$\   $$$$$$\  $$$$$$$\  $$$$$$$$\  $$$$$$\  $$\   $$\ $$$$$$$$\ $$\ $$\ $$\
  \_$$ _| $$$\    $$$ |$$  __$$\ $$  __$$\ $$  __$$\ \__$$  __|$$  __$$\ $$$\  $$ |\__$$  __|$$ |$$ |$$ |

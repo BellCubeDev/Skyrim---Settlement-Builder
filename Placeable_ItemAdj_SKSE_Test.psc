@@ -1,4 +1,4 @@
-Scriptname Placeable_ItemAdj_SKSE_Test extends ObjectReference  
+Scriptname SSB_ItemAdj_SKSE_Test extends ObjectReference  
  
  
 Message Property MenuUi  Auto

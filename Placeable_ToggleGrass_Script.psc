@@ -1,17 +1,17 @@
-Scriptname Placeable_ToggleGrass_Script extends activemagiceffect  
+Scriptname SSB_ToggleGrass_Script extends activemagiceffect  
 
 Message Property SSB_AAA_ToggleGrass  Auto
 Message Property SSB_AAA_ToggleGrass02  Auto
 
 
 Event OnEffectStart(Actor akTarget, Actor akCaster)
-Placeable_AAA_ToggleGrass.Show()
+SSB_AAA_ToggleGrass.Show()
 Utility.Wait(1)
 Toggle_GrassMenu()
 EndEvent
 
 Function Toggle_GrassMenu(Int aibutton = 0)
-aibutton = Placeable_AAA_ToggleGrass02.show()
+aibutton = SSB_AAA_ToggleGrass02.show()
 
 If aibutton == 1
 Utility.SetINIBool("bAllowCreateGrass:Grass", False)

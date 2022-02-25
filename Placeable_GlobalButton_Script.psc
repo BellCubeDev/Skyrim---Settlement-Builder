@@ -1,4 +1,4 @@
-Scriptname Placeable_GlobalButton_Script extends ObjectReference  
+Scriptname SSB_GlobalButton_Script extends ObjectReference  
 
 GlobalVariable Property IO_01  Auto
 

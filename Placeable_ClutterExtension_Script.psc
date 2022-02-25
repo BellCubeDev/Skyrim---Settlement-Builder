@@ -1,4 +1,4 @@
-Scriptname Placeable_ClutterExtension_Script extends ObjectReference 
+Scriptname SSB_ClutterExtension_Script extends ObjectReference 
 
  
 

@@ -1,4 +1,4 @@
-Scriptname Placeable_DoorReturn_Script extends ObjectReference  
+Scriptname SSB_DoorReturn_Script extends ObjectReference  
 
 
 ObjectReference Property ReturnMarker  Auto
