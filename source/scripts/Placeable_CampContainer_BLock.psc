@@ -1,0 +1,1 @@
+Scriptname SSB_CampContainer_BLock extends _camp_placeableobjectbase  
