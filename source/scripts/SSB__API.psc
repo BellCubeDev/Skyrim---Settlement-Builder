@@ -36,6 +36,14 @@ Message Property SSB_MenuUi_Z_Rotate_SKSE  Auto
 
 Message Property SSB_MenuUi_Switch_Save  Auto
 
+
+;/
+MiscObject property MiscObj  Auto
+
+Static Property StaticDummy  Auto
+Activator Property My_Activator_Static  Auto
+/;
+
 ; Spells (for some reason)
 Spell Property SSB_SKSE_Positioner_Toggle  Auto
 Spell Property SSB_Auto_Level_Object_Global_Toggle_Spell  Auto
@@ -53,18 +61,19 @@ Spell Property SSB_Auto_Level_Object_Global_Toggle_Spell  Auto
 /; ; And yes, I'm using long comments now.
 
 Bool Property UseSKSE Hidden ; ReadOnly
+    {Is SKSE useable and wanted?}
     Bool Function Get()
         ;                                                     | For the rest of this line, thanks Pickysaurus!
         return SSB_Positioner_SKSE_Global.GetValue() == 0.0 && SKSE.GetVersionRelease() && (SKSE.GetVersionRelease() == SKSE.GetScriptVersionRelease())
-        ;      Does the user want SKSE stuff?                 Is working in the engine?      Does the version stored in the script match the version in the engine?
+        ;      Does the user want SKSE stuff?                  Is working in the engine?   Does the version stored in the script match the version in the engine?
     EndFunction
 EndProperty
-{Is SKSE useable and wanted?}
 
 ; Same tech used to check if we should do auto-leveling.
 ; However here, we have a Set() here too. Makes it easy for us.
 ; This is what we call a "wrapper"
-Bool Property DoAutoLevel Hidden ; ReadOnly
+Bool Property DoAutoLevel Hidden
+    {Should we level items automatically?}
     Bool Function Get()
         ; Casting an Int or a Float to a Bool checks if the value is non-zero. In this use case, any non-zero value will disable Auto-leveling.
         return !SSB_AutoLevel_Disabled.GetValue()
@@ -74,7 +83,7 @@ Bool Property DoAutoLevel Hidden ; ReadOnly
         SSB_AutoLevel_Disabled.SetValue((!abNewValue) as Float)
     EndFunction
 EndProperty
-{Should we level items automatically?}
+
 
 
 
@@ -296,14 +305,6 @@ EndFunction
 
 Function EnterSKSEMenus(ObjectReference akObject, Bool abUseActivatorMenus)
     If abUseActivatorMenus
-        Menu_Activator(akObject)
-    Else
-        Menu(akObject)
-    EndIf
-EndFunction
-
-Function EnterSKSEMenus(ObjectReference akObject, Bool abUseActivatorMenus)
-    If abUseActivatorMenus
         Menu_Activator_SKSE(akObject)
     Else
         Menu_SKSE(akObject)
@@ -357,7 +358,8 @@ Function Menu(ObjectReference akObject)
         Debug.MessageBox("Level Button")
 
     ElseIf aiButton == 6
-        Universal_PuckUp
+        Universal_PuckUp(akObject)
+
 
     ElseIf aiButton == 7   ; Options
         MenuUi_Options(akObject)
@@ -394,8 +396,8 @@ Message Property SSB_Notification_AlreadyLevel  Auto
 
 Function Auto_Level_Button(ObjectReference akObject)
     If akObject.GetAngleX() == 0 && akObject.GetAngleY() == 0
-
-    akObject.SetAngle(0.0, 0.0, Self.GetAngleZ())
+        akObject.SetAngle(0.0, 0.0, Self.GetAngleZ())
+    EndIf
 EndFunction
 
 
@@ -411,38 +413,36 @@ $$$$$$$$\         $$ | \_/ $$ |\$$$$$$$\ $$ |  $$ |\$$$$$$  |
 \________|        \__|     \__| \_______|\__|  \__| \______/;
 
 
-Function Z_Menu(ObjectReference akObject)
+Function Z_Menu()
     Int aiButton
-
     While aiButton ; BELL: Using an Int as a condition checks If it isn't 0
-        aiButton =  Z_Ui.show()
-
+        aiButton =  Y_Ui.show()
         If aiButton == 0 ; Exit Button
-            Menu(akObject)
+            Menu()
             return
         EndIf
-
-        akObject.DisableNoWait()
+        Int afChange
         If aiButton == 1
-            akObject.SetPosition(X, Y, Z - 50)
-        ElseIf aiButton == 2
-            akObject.SetPosition(X, Y, Z - 30)
+            afChange = -50
+        If aiButton == 2
+            afChange = -30
         ElseIf aiButton == 3
-            akObject.SetPosition(X, Y, Z - 10)
+            afChange = -10
         ElseIf aiButton == 4
-            akObject.SetPosition(X, Y, Z - 1)
+            afChange = -1
         ElseIf aiButton == 5
-            akObject.SetPosition(X, Y, Z + 1)
+            afChange = 1
         ElseIf aiButton == 6
-            akObject.SetPosition(X, Y, Z + 10)
+            afChange = 10
         ElseIf aiButton == 7
-            akObject.SetPosition(X, Y, Z + 30)
+            afChange = 30
         ElseIf aiButton == 8
-            akObject.SetPosition(X, Y, Z + 50)
+            afChange = 50
         EndIf
-        akObject.EnableNoWait()
 
-    EndWhile
+        ; Translate the object!
+        akObject.SplineTranslateTo(akObject.X, akObject.Y, akObject.Z + afChange, akObject.GetAngleX(), akObject.GetAngleY(), akObject.GetAngleZ(), 30, 2000)
+    EndIf
 EndFunction
 
 
@@ -456,38 +456,36 @@ EndFunction
     \__|            \__|     \__| \_______|\__|  \__| \______/;
 
 
-Function Y_Menu(ObjectReference akObject)
+Function Y_Menu()
     Int aiButton
-
     While aiButton ; BELL: Using an Int as a condition checks If it isn't 0
         aiButton =  Y_Ui.show()
-
         If aiButton == 0 ; Exit Button
-            Menu(akObject)
+            Menu()
             return
         EndIf
-
-        akObject.DisableNoWait()
+        Int afChange
         If aiButton == 1
-            akObject.SetPosition(X, Y - 50, Z)
-        ElseIf aiButton == 2
-            akObject.SetPosition(X, Y - 30, Z)
+            afChange = -50
+        If aiButton == 2
+            afChange = -30
         ElseIf aiButton == 3
-            akObject.SetPosition(X, Y - 10, Z)
+            afChange = -10
         ElseIf aiButton == 4
-            akObject.SetPosition(X, Y - 1, Z)
+            afChange = -1
         ElseIf aiButton == 5
-            akObject.SetPosition(X, Y + 1, Z)
+            afChange = 1
         ElseIf aiButton == 6
-            akObject.SetPosition(X, Y + 10, Z)
+            afChange = 10
         ElseIf aiButton == 7
-            akObject.SetPosition(X, Y + 30, Z)
+            afChange = 30
         ElseIf aiButton == 8
-            akObject.SetPosition(X, Y + 50, Z)
+            afChange = 50
         EndIf
-        akObject.EnableNoWait()
 
-    EndWhile
+        ; Translate the object!
+        akObject.SplineTranslateTo(akObject.X, akObject.Y + afChange, akObject.Z, akObject.GetAngleX(), akObject.GetAngleY(), akObject.GetAngleZ(), 30, 2000)
+    EndIf
 EndFunction
 
 ;/\   /-\         $$\      $$\
@@ -502,17 +500,13 @@ $$ /  $$ |        $$ | \_/ $$ |\$$$$$$$\ $$ |  $$ |\$$$$$$  |
 
 Function X_Menu()
     Int aiButton
-
     While aiButton ; BELL: Using an Int as a condition checks If it isn't 0
         aiButton =  X_Ui.show()
-
         If aiButton == 0 ; Exit Button
             Menu()
             return
         EndIf
-
         Int afChange
-
         If aiButton == 1
             afChange = -50
         If aiButton == 2
@@ -529,11 +523,10 @@ Function X_Menu()
             afChange = 30
         ElseIf aiButton == 8
             afChange = 50
-
         EndIf
 
+        ; Translate the object!
         akObject.SplineTranslateTo(akObject.X + afChange, akObject.Y, akObject.Z, akObject.GetAngleX(), akObject.GetAngleY(), akObject.GetAngleZ(), 30, 2000)
-        EndIf
     EndWhile
 EndFunction
 
@@ -547,29 +540,15 @@ EndFunction
  \__|  \__| \______/    \____/  \_______|   \____/  \_______|      \_/   \_/;
 
 
-;/$$$$$$\              $$\                 $$\                     $$$$$$$$\ 
- $$  __$$\             $$ |                $$ |                    \____$$  |
- $$ |  $$ | $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$\    $$$$$$\            $$  / 
- $$$$$$$  |$$  __$$\ \_$$  _|   \____$$\ \_$$  _|  $$  __$$\          $$  /  
- $$  __$$< $$ /  $$ |  $$ |     $$$$$$$ |  $$ |    $$$$$$$$ |        $$  /   
- $$ |  $$ |$$ |  $$ |  $$ |$$\ $$  __$$ |  $$ |$$\ $$   ____|       $$  /    
- $$ |  $$ |\$$$$$$  |  \$$$$  |\$$$$$$$ |  \$$$$  |\$$$$$$$\       $$$$$$$$\ 
- \__|  \__| \______/    \____/  \_______|   \____/  \_______|      \_______/;
-
-
-Function Rotate_Z_Menu()
+ Function Rotate_X_Menu()
     Int aiButton
-
     While aiButton ; BELL: Using an Int as a condition checks If it isn't 0
-        aiButton = Rotate_Z_Ui.show()
-
+        aiButton = Rotate_X_Ui.show()
         If aiButton == 0 ; Exit Button
             Menu()
             return
         EndIf
-
         Int afChange
-
         If aiButton == 1
             afChange = -50
         If aiButton == 2
@@ -586,11 +565,53 @@ Function Rotate_Z_Menu()
             afChange = 30
         ElseIf aiButton == 8
             afChange = 50
-
         EndIf
 
+        ; Translate the object!
+        akObject.SplineTranslateTo(akObject.X, akObject.Y, akObject.Z, akObject.GetAngleX() + afChange, akObject.GetAngleY(), akObject.GetAngleZ(), 30, 2000)
+    EndWhile
+EndFunction
+
+
+
+;/$$$$$$\              $$\                 $$\                     $$$$$$$$\ 
+ $$  __$$\             $$ |                $$ |                    \____$$  |
+ $$ |  $$ | $$$$$$\  $$$$$$\    $$$$$$\  $$$$$$\    $$$$$$\            $$  / 
+ $$$$$$$  |$$  __$$\ \_$$  _|   \____$$\ \_$$  _|  $$  __$$\          $$  /  
+ $$  __$$< $$ /  $$ |  $$ |     $$$$$$$ |  $$ |    $$$$$$$$ |        $$  /   
+ $$ |  $$ |$$ |  $$ |  $$ |$$\ $$  __$$ |  $$ |$$\ $$   ____|       $$  /    
+ $$ |  $$ |\$$$$$$  |  \$$$$  |\$$$$$$$ |  \$$$$  |\$$$$$$$\       $$$$$$$$\ 
+ \__|  \__| \______/    \____/  \_______|   \____/  \_______|      \_______/;
+
+Function Rotate_Z_Menu()
+    Int aiButton
+    While aiButton ; BELL: Using an Int as a condition checks If it isn't 0
+        aiButton = Rotate_Z_Ui.show()
+        If aiButton == 0 ; Exit Button
+            Menu()
+            return
+        EndIf
+        Int afChange
+        If aiButton == 1
+            afChange = -50
+        If aiButton == 2
+            afChange = -30
+        ElseIf aiButton == 3
+            afChange = -10
+        ElseIf aiButton == 4
+            afChange = -1
+        ElseIf aiButton == 5
+            afChange = 1
+        ElseIf aiButton == 6
+            afChange = 10
+        ElseIf aiButton == 7
+            afChange = 30
+        ElseIf aiButton == 8
+            afChange = 50
+        EndIf
+
+        ; Translate the object!
         akObject.SplineTranslateTo(akObject.X, akObject.Y, akObject.Z, akObject.GetAngleX(), akObject.GetAngleY(), akObject.GetAngleZ() + afChange, 30, 2000)
-        EndIf
     EndWhile
 EndFunction
 
@@ -606,7 +627,7 @@ EndFunction
            $$ |
            \__/;
 
-Function MenuUi_Options()
+Function Menu_Options()
     Int aiButton =  MenuUi_Options.show()
 
     If aiButton == 0
@@ -616,23 +637,8 @@ Function MenuUi_Options()
     EndIf
 EndFunction
 
-;BELL: Assuming the menu's only options are 0 and 1, you can use a much more elegant system, like this one.
-;/
-Function MenuUi_Options()
 
-    Int aiButton =  MenuUi_Options.show()
-
-    If aiButton == 1
-        MenuUi_Options_PositionerMenu()
-        Return
-    Else
-        Menu()
-    EndIf
-EndFunction
-/;
-
-
-Function MenuUi_Options_PositionerMenu() ; Show Option Menu
+Function Menu_Options_PositionerMenu() ; Show Option Menu
     Int aiButton= MenuUi_Options_PositionerMenu.Show()
 
     If aibutton == 0
@@ -663,7 +669,7 @@ $$\   $$ |  $$ |$$\ $$  __$$ |  $$ |$$\ $$ |$$ |            $$ |\$  /$$ |$$   __
 
 ; BELL: I removed the SKSE variant since no SKSE-exclusive functions exist in the SKSE version.
 
-Function MenuUi_MakeStatic()
+Function Menu_MakeStatic()
     Int aiButton = MenuUi_MakeStatic.show()
 
     ; BELL: Early Returns make code easier to parse
@@ -751,50 +757,40 @@ EndFunction
    / /\ \    / __| | __| | | \ \ / /  / _` | | __|  / _ \  | '__|     / /\ \   | | | __|    
   / ____ \  | (__  | |_  | |  \ V /  | (_| | | |_  | (_) | | |       / ____ \  | | | |_   _ 
  /_/    \_\  \___|  \__| |_|   \_/    \__,_|  \__|  \___/  |_|      /_/    \_\ |_|  \__| (_)
-
 /;
+
+; UNFINISHED
 
 Function Menu_Activator_SKSE()
    Int aiButton =  MenuUi_SKSE.show()
-
-
     ;Debug.Notification("SKSE Positioner Active")
     Debug.Trace("[LVX-SSS] SKSE Positioner Active")
-
     ;/    Move  Z   /; If aiButton == 2
-        Z_Menu_SKSE()
+    Z_Menu_SKSE()
     ;/    Move  Y   /; ElseIf aiButton == 3
         Y_Menu_SKSE()
     ;/    Move  X   /; ElseIf aiButton == 4
         X_Menu_SKSE()
-
     ;/    Rotate    /; ElseIf aiButton == 5
         Rotate_Menu_SKSE()
         ;Debug.Notification("Object is facing "+ GetAngleZ()+" Degrees")
         Debug.Trace("[LVX-SSS] Object is facing "+ GetAngleZ()
         ;BELL: What purpose does the "Utility.wait(0.1)" that was here serve?
-
     ;/  Auto-Level  /; ElseIf aiButton == 6
         Auto_Level_Button()
-
     ;/    Pick Up   /; ElseIf aiButton == 7
-       Self.DisableNoWait(True)
-       PlayerREF.AddItem(MiscObj)
-
-       ;BELL: I changed it to a "sandwhiched" disablement system,
-       ;      where the item starts fading and, While it is fading, the item is added to the Player. Just a player conveinience.
-       Self.Disable(True)
-       Self.Delete()
-
+        Self.DisableNoWait(True)
+        PlayerREF.AddItem(MiscObj)
+        ;BELL: I changed it to a "sandwhiched" disablement system,
+        ;      where the item starts fading and, While it is fading, the item is added to the Player. Just a player conveinience.
+        Self.Disable(True)
+        Self.Delete()
     ;/    Options   /; ElseIf aiButton == 8
-      MenuUi_Options_SKSE()
-
+        MenuUi_Options_SKSE()
     ;/  Make Static /; ElseIf aiButton == 9
-        MenuUi_MakeStatic()
-
-    EndIf
-EndFunction
-
+            MenuUi_MakeStatic()
+        EndIf
+  EndFunction
 
 
 ;/$$$$$$$\        $$\      $$\                                      $$$$$$\  $$\   $$\  $$$$$$\  $$$$$$$$\
@@ -1039,7 +1035,7 @@ EndFunction
            \__|
 
 
-Function MenuUi_Options_SKSE()
+Function Menu_Options_SKSE()
 
         Int aiButton =  MenuUi_Options_SKSE.show()
         
@@ -1065,7 +1061,7 @@ Function MenuUi_Options_SKSE()
 EndFunction
 
 
-Function MenuUi_Options_PositionerMenu_SKSE() ; Show Option Menu
+Function Menu_Options_PositionerMenu_SKSE() ; Show Option Menu
     Int aiButton= MenuUi_Options_PositionerMenu_SKSE.Show()
 
     ;BELL: You can use the commented-out code when you add more options. Or, you can expand this. Either way works.

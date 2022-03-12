@@ -26,7 +26,7 @@ Event OnInit()
 
     ;======================================================================================================================
 
-    SSB_API.AutoLevel(self, !SSB_AutoLevel_Disabled.GetValueInt())
+    SSB__API.AutoLevel(self, !SSB_AutoLevel_Disabled.GetValueInt())
 
     If __IsActivateable
         GoToState("")

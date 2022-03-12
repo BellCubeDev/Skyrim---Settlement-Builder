@@ -33,11 +33,12 @@ Event OnInit()
     ;/   Delete All  Fomlist   /; SSB_A_DeleteAll = Game.GetFormFromFile(0x00E26327, "LvxMagick - Skyrim - Settlement Builder.Esp") as Formlist
 
     ;/   Auto-Level Objects?   /; SSB_AutoLevel_Disabled = Game.GetFormFromFile(0x00DD0161, "LvxMagick - Skyrim - Settlement Builder.Esm") as GlobalVariable
-    ;debug.Notification(SSB_AutoLevel_Disabled+": "+SSB_AutoLevel_Disabled.GetValue())    Debug.Trace("[LVX-SSS] " + SSB_AutoLevel_Disabled+": "+SSB_AutoLevel_Disabled.GetValue()
+    ;debug.Notification(SSB_AutoLevel_Disabled+": "+SSB_AutoLevel_Disabled.GetValue())
+    Debug.Trace("[LVX-SSS] " + SSB_AutoLevel_Disabled+": "+SSB_AutoLevel_Disabled.GetValue()
 
     ;======================================================================================================================
 
-    SSB_API.AutoLevel(self, !SSB_AutoLevel_Disabled.GetValueInt())
+    SSB__API.AutoLevel(self, !SSB_AutoLevel_Disabled.GetValueInt())
 
     If __IsActivateable
         GoToState("")

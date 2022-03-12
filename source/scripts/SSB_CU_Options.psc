@@ -1,6 +1,8 @@
-Scriptname SSB_BookMenu_Script extends ObjectReference  
+Scriptname SSB_CU_Options extends activemagiceffect  
 
 
+Actor Property PlayerRef  Auto
+Message Property SSB_AAA_ManualMenu_Options  Auto
 Message Property ManualMenu  Auto  
 Message Property ManualMenu_AddSpells  Auto  
 Message Property ManualMenu_RemoveSpells  Auto
@@ -15,6 +17,7 @@ Message Property ManualMenu_RemoveSpells_Utilities  Auto
 
 Spell Property CreativeModeSpell  Auto
 Spell Property CreativeCatalogueSpell  Auto
+Spell Property CreativeStorageSpell  Auto
 Spell Property TCLSpell  Auto
 Spell Property ToggleGrassSpell  Auto
 Spell Property SmithingSpell  Auto 
@@ -28,16 +31,36 @@ Spell Property StoreFrontSpell  Auto
 Spell Property ArmourerSpell  Auto   
 Spell Property SharpeningSpell  Auto
 Spell Property BakingSpell  Auto
-Spell Property SKSE_PositionerSpell  Auto
-Spell Property CreativeStorageSpell  Auto
 Spell Property Dice01Spell  Auto
-Spell Property YesOrNoSpell  Auto 
+Spell Property YesOrNoSpell  Auto
+Spell Property SKSE_PositionerSpell  Auto
 MiscObject Property CreativeCatalogueMisc  Auto
+  
+Spell Property SSB_Auto_Level_Object_Global_Toggle_Spell  Auto
+Spell Property SSB_SKSE_Positioner_Toggle  Auto
+Spell Property SSB_PowerConfig_Spell_02  Auto
+;=============Test Delete All===================================
 
-Event OnRead()
-  Menu()
+Message Property SSB_AAA_Delete_All  Auto
+Message Property SSB_AAA_Delete_All_01  Auto
+Message Property SSB_AAA_Delete_All_02  Auto
+Message Property SSB_AAA_Delete_All_03  Auto; Final Delete
+
+FormList Property SSB_A_DeleteAll  Auto
+{A list to delete the otems in}
+
+Bool Property DisableInstead  Auto
+{Disable the items instead?}
+
+Bool Property FadeItems  Auto
+{If we're disabling, should we also fade them?}
+
+
+Event OnEffectStart(Actor akTarget, Actor akCaster)
+
+   Menu()
+
 EndEvent
-
 
 ;----------------------------------------------------------------------------------------------
 ;MAIN MENU
@@ -45,14 +68,16 @@ EndEvent
 
 
 Function Menu(Int aiButton = 0)
-     aiButton = ManualMenu.show()
+     aiButton = SSB_AAA_ManualMenu_Options.show()
 
     If aiButton == 1
-        ManualMenu_AddSpells()
+       SSB_PowerConfig_Spell_02.Cast(Game.GetPlayer())
     ElseIf aiButton == 2
-       ManualMenu_RemoveSpells()
+       SSB_SKSE_Positioner_Toggle.cast(PlayerRef)
     ElseIf aiButton == 3
-        
+       SSB_Auto_Level_Object_Global_Toggle_Spell.cast(PlayerRef)
+    ElseIf aiButton == 4
+        Delete_All()
      EndIf
 EndFunction
 
@@ -122,7 +147,7 @@ EndFunction
 ;---------------------------------------------------------------------------------------------
 
 Function ManualMenu_RemoveSpells(Int aiButton = 0)
-      aiButton =  ManualMenu_RemoveSpells.show()
+        aiButton =  ManualMenu_RemoveSpells.show()
 
 
     If aiButton == 1 ;Remove All Powers
@@ -471,7 +496,8 @@ Function ManualMenu_AddSpells_Creative_Special(Int aiButton = 0)
 
     ElseIf aiButton == 2
     Game.GetPlayer().AddSpell(CreativeStorageSpell)  
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
    ElseIf aiButton == 3
         
@@ -495,7 +521,8 @@ Function ManualMenu_AddSpells_Utilities(Int aiButton = 0)
 
     ElseIf aiButton == 2
    Game.GetPlayer().AddSpell(TCLSpell)   
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
   ElseIf aiButton == 3
   Game.GetPlayer().AddSpell(ToggleGrassSpell)
@@ -513,13 +540,14 @@ Function ManualMenu_RemoveSpells_Utilities(Int aiButton = 0)
 
 
  If aiButton == 1
-    Game.GetPlayer().RemoveSpell(SKSE_PositionerSpell)
+ Game.GetPlayer().RemoveSpell(SKSE_PositionerSpell)
     ;debug.Notification("TCL ADDED")
     Debug.Trace("[LVX-SSS] TCL ADDED")
 
     ElseIf aiButton == 2
    Game.GetPlayer().RemoveSpell(TCLSpell)   
-   ;  debug.Notification("Creative Special: Dice")  Debug.Trace("[LVX-SSS] Creative Special: Dice")
+   ;  debug.Notification("Creative Special: Dice")
+  Debug.Trace("[LVX-SSS] Creative Special: Dice")
         
   ElseIf aiButton == 3
   Game.GetPlayer().RemoveSpell(ToggleGrassSpell)
@@ -527,6 +555,47 @@ Function ManualMenu_RemoveSpells_Utilities(Int aiButton = 0)
 
 EndFunction
 
+        
+  
+   ;==================Test Feature ====== Delete All
+ 
+
+
+Function Delete_All()
+    Int aiButton = SSB_AAA_Delete_All.show()
+
+    If  aiButton == 0 
+        Menu()
+        ;Debug.Notification("Menu selection: "+aiButton+". Returning...")
+        Debug.Trace("[LVX-SSS] Menu selection: "+aiButton+". Returning...")
+    ElseIf aiButton == 3; Yes
+        Game.FadeOutGame(True, True, 0, 2)
+        Utility.Wait(1)
+        DeleteAllItemsInList(SSB_A_DeleteAll, False, True)
+        Game.FadeOutGame(False, True, 2.0, 2.0) 
+        ;Debug.Notification("Menu selection: "+aiButton+". Deleting...") 
+        Debug.Trace("[LVX-SSS] Menu selection: "+aiButton+". Deleting...")
+    Else
+        ;Debug.Notification("Menu selection: "+aiButton)
+        Debug.Trace("[LVX-SSS] Menu selection: "+aiButton)
+    EndIf
+EndFunction
 
 
 
+
+Function DeleteAllItemsInList(FormList akList, Bool abOnlyDisable = False, Bool abFade = True) Global
+    Int aiSize = akList.GetSize()
+    Int i = 0
+    If abOnlyDisable
+        While i < aiSize
+            (akList.GetAt(i) as ObjectReference).DisableNoWait(abFade)
+            i += 1
+        EndWhile
+    Else
+        While i < aiSize
+            (akList.GetAt(i) as ObjectReference).Delete()
+            i += 1
+        EndWhile
+    EndIf
+EndFunction
